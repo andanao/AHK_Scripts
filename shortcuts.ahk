@@ -193,21 +193,11 @@ PgUp::
 	{
 		; MsgBox VSCOOOODE\n  %winid%
 		SendInput, {Insert}
+		return
 	} 
 	IfWinNotActive, Visual Studio 
 	{
-		currHwnd := WinExist("A")
-		spotifyHwnd := getSpotifyHwnd()
-		if (currHwnd=spotifyHwnd)
-		{
-			Winactivate, ahk_id %prevHwnd%
-			Return
-		} Else {
-			prevHwnd := currHwnd
-			WinActivate, ahk_id %spotifyHwnd%
-			Return
-		}
-		MsgBox Open Window %winid%
+		focus_spotify()
 	}
 	return
 }
