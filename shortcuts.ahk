@@ -1,16 +1,8 @@
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+DetectHiddenWindows, On
 
 
-; ^\:: Run, C:\Program Files\Sublime Text 3\subl.exe, "%A_ScriptDir%.shortcuts.ahk"
-; ^+d::Run "C:\Users\Adrian\Downloads"
-
-
-; #g:: ; Google search selected Texts
-; 	;	send, ^c
-; 	;	Sleep, 100
-; 	run http://www.google.com/search?q=%Clipboard%
-; return
 
 
 ; Press ~ to move up a folder in Explorer
@@ -161,18 +153,13 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 
 PgUp::
 {
-	; WinGet, winid ,, A ;
-	; WinGetTitle, winid ;, WinTitle, WinText, ExcludeTitle, ExcludeText
+
 	WinGetActiveTitle, winid
 	SetTitleMatchMode RegEx
-	#IfWinActive Google Chrome|Mozilla Firefox
-	{
-		MsgBox Chomey boiis  %winid%
-	}
-
 	IfWinActive, Visual Studio
 	{
-		MsgBox ayyyy %winid%
+		; MsgBox VSCOOOODE\n  %winid%
+		SendInput, {Insert}
 	}
 	else{
 		MsgBox Open Window %winid%
