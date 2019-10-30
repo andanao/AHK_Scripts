@@ -161,7 +161,21 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 
 PgUp::
 {
-	WinGet, winid ,, A ;
-	MsgBox Open Window %winid%
+	; WinGet, winid ,, A ;
+	; WinGetTitle, winid ;, WinTitle, WinText, ExcludeTitle, ExcludeText
+	WinGetActiveTitle, winid
+	SetTitleMatchMode RegEx
+	#IfWinActive Google Chrome|Mozilla Firefox
+	{
+		MsgBox Chomey boiis  %winid%
+	}
+
+	IfWinActive, Visual Studio
+	{
+		MsgBox ayyyy %winid%
+	}
+	else{
+		MsgBox Open Window %winid%
+	}
 	return
 }
