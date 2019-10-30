@@ -2,15 +2,15 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 
 
-^\:: Run, C:\Program Files\Sublime Text 3\subl.exe, "%A_ScriptDir%.shortcuts.ahk"
-^+d::Run "C:\Users\Adrian\Downloads"
+; ^\:: Run, C:\Program Files\Sublime Text 3\subl.exe, "%A_ScriptDir%.shortcuts.ahk"
+; ^+d::Run "C:\Users\Adrian\Downloads"
 
 
-#g:: ; Google search selected Texts
-	;	send, ^c
-	;	Sleep, 100
-	run http://www.google.com/search?q=%Clipboard%
-return
+; #g:: ; Google search selected Texts
+; 	;	send, ^c
+; 	;	Sleep, 100
+; 	run http://www.google.com/search?q=%Clipboard%
+; return
 
 
 ; Press ~ to move up a folder in Explorer
