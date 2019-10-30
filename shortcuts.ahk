@@ -159,3 +159,9 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 	::\\usa::United States of America
 
 
+PgUp::
+{
+	WinGet, winid ,, A ;
+	MsgBox Open Window %winid%
+	return
+}
