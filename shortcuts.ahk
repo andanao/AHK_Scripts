@@ -21,6 +21,21 @@ spotifyKey(key) {
 	Return
 }
 
+focus_spotify(){
+	currHwnd := WinExist("A")
+	spotifyHwnd := getSpotifyHwnd()
+	if (currHwnd=spotifyHwnd)
+	{
+		Winactivate, ahk_id %prevHwnd%
+		Return
+	}
+	Else
+	{
+		prevHwnd := currHwnd
+		WinActivate, ahk_id %spotifyHwnd%
+		Return
+	}
+}
 
 
 ; Press ~ to move up a folder in Explorer
@@ -178,7 +193,9 @@ PgUp::
 	{
 		; MsgBox VSCOOOODE\n  %winid%
 		SendInput, {Insert}
-	} Else {
+	} 
+	IfWinNotActive, Visual Studio 
+	{
 		currHwnd := WinExist("A")
 		spotifyHwnd := getSpotifyHwnd()
 		if (currHwnd=spotifyHwnd)
@@ -198,17 +215,5 @@ PgUp::
 
 PgDn::
 {	
-	currHwnd := WinExist("A")
-	spotifyHwnd := getSpotifyHwnd()
-	if (currHwnd=spotifyHwnd)
-	{
-		Winactivate, ahk_id %prevHwnd%
-		Return
-	}
-	Else
-	{
-		prevHwnd := currHwnd
-		WinActivate, ahk_id %spotifyHwnd%
-		Return
-	}
+	focus_spotify()
 }
