@@ -195,15 +195,16 @@ PgUp::
 		SendInput, {Insert}
 		return
 	} 
-	IfWinNotActive, Visual Studio 
-	{
-		focus_spotify()
-	}
+	; for some reason the code below never works ¯\_(ツ)_/¯ 
+	; IfWinNotActive, Visual Studio 
+	; {
+	; 	focus_spotify()
+	; }
 	return
 }
 
 
 PgDn::
 {	
-	focus_spotify()
+	focus_spotify() ; doesn't return focus to original window
 }
