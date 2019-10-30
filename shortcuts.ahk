@@ -2,6 +2,24 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 DetectHiddenWindows, On
 
+getSpotifyHwnd() {
+	WinGet, spotifyHwnd, ID, ahk_exe spotify.exe
+	; We need the app's third top level window, so get next twice.
+	spotifyHwnd := DllCall("GetWindow", "uint", spotifyHwnd, "uint", 2)
+	spotifyHwnd := DllCall("GetWindow", "uint", spotifyHwnd, "uint", 2)
+	SetFormat, IntegerFast, hex
+	Return spotifyHwnd
+}
+
+; Send a key to Spotify.
+spotifyKey(key) {
+	spotifyHwnd := getSpotifyHwnd()
+	; Chromium ignores keys when it isn't focused.
+	; Focus the document window without bringing the app to the foreground.
+	ControlFocus, Chrome_RenderWidgetHostHWND1, ahk_id %spotifyHwnd%
+	ControlSend, , %key%, ahk_id %spotifyHwnd%
+	Return
+}
 
 
 
@@ -160,9 +178,37 @@ PgUp::
 	{
 		; MsgBox VSCOOOODE\n  %winid%
 		SendInput, {Insert}
-	}
-	else{
+	} Else {
+		currHwnd := WinExist("A")
+		spotifyHwnd := getSpotifyHwnd()
+		if (currHwnd=spotifyHwnd)
+		{
+			Winactivate, ahk_id %prevHwnd%
+			Return
+		} Else {
+			prevHwnd := currHwnd
+			WinActivate, ahk_id %spotifyHwnd%
+			Return
+		}
 		MsgBox Open Window %winid%
 	}
 	return
+}
+
+
+PgDn::
+{	
+	currHwnd := WinExist("A")
+	spotifyHwnd := getSpotifyHwnd()
+	if (currHwnd=spotifyHwnd)
+	{
+		Winactivate, ahk_id %prevHwnd%
+		Return
+	}
+	Else
+	{
+		prevHwnd := currHwnd
+		WinActivate, ahk_id %spotifyHwnd%
+		Return
+	}
 }
