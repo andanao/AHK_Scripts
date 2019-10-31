@@ -22,19 +22,8 @@ DetectHiddenWindows, On
 
 ; spotifyHwnd := getSpotifyHwnd()
 
-; f2:: 	
-; 	SendInput, {Volume_Down}
-; 	SoundSet, -8
-; Return
 ~Volume_Down::	SoundSet, -8 Return
 ~Volume_Up::	SoundSet, +8 Return
-	; SendInput, {Volume_Down}
-
-	; send, {Volume_Up}
-; Return
-; f3:: 	
-; 	SendInput, {Volume_Up}
-; 	SoundSet, +8
 
 ; Return
 ; f4:: 	SendInput, {Media_Prev}
