@@ -26,6 +26,11 @@ DetectHiddenWindows, On
 ; 	SendInput, {Volume_Down}
 ; 	SoundSet, -8
 ; Return
+~Volume_Down::	SoundSet, -8
+	; SendInput, {Volume_Down}
+
+	; send, {Volume_Up}
+; Return
 ; f3:: 	
 ; 	SendInput, {Volume_Up}
 ; 	SoundSet, +8
