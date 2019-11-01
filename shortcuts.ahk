@@ -2,6 +2,9 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 DetectHiddenWindows, On
 
+global currHwnd, spotifyHwnd
+
+
 getSpotifyHwnd() {
 	WinGet, spotifyHwnd, ID, ahk_exe spotify.exe
 	; We need the app's third top level window, so get next twice.
@@ -192,10 +195,14 @@ PgUp::
 	SetTitleMatchMode RegEx
 	IfWinActive, Visual Studio
 	{
-		; MsgBox VSCOOOODE\n  %winid%
-		SendInput, {Insert}
-		return
+		MsgBox VSCOOOODE\n  %winid%
+		; SendInput, {Insert}
+		; return
 	} 
+	Else{
+		MsgBox not\n  %winid%
+		; Send, PgUp
+	}
 	; for some reason the code below never works ¯\_(ツ)_/¯ 
 	; IfWinNotActive, Visual Studio 
 	; {
@@ -207,5 +214,18 @@ PgUp::
 
 PgDn::
 {	
-	focus_spotify() ; doesn't return focus to original window
+	currHwnd := WinExist("A")
+	spotifyHwnd := getSpotifyHwnd()
+	if (currHwnd=spotifyHwnd)
+	{
+		Winactivate, ahk_id %prevHwnd%
+		Return
+	}
+	Else
+	{
+		prevHwnd := currHwnd
+		WinActivate, ahk_id %spotifyHwnd%
+		Return
+	}
+	; focus_spotify() ; doesn't return focus to original window
 }
