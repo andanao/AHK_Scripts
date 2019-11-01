@@ -195,12 +195,26 @@ PgUp::
 	SetTitleMatchMode RegEx
 	IfWinActive, Visual Studio
 	{
-		MsgBox VSCOOOODE\n  %winid%
+		currHwnd := WinExist("A")
+		MsgBox VSCOOOODE\n  %winid% ------ %currHwnd%
 		; SendInput, {Insert}
 		; return
 	} 
 	Else{
-		MsgBox not\n  %winid%
+		currHwnd := WinExist("A")
+		MsgBox not  %winid% ------ %currHwnd%
+		; spotifyHwnd := getSpotifyHwnd()
+		; if (currHwnd=spotifyHwnd)
+		; {
+		; 	Winactivate, ahk_id %prevHwnd%
+		; 	Return
+		; }
+		; Else
+		; {
+		; 	prevHwnd := currHwnd
+		; 	WinActivate, ahk_id %spotifyHwnd%
+		; 	Return
+		; }
 		; Send, PgUp
 	}
 	; for some reason the code below never works ¯\_(ツ)_/¯ 
