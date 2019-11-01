@@ -1,45 +1,5 @@
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-DetectHiddenWindows, On
-
-global currHwnd, spotifyHwnd
-
-
-getSpotifyHwnd() {
-	WinGet, spotifyHwnd, ID, ahk_exe spotify.exe
-	; We need the app's third top level window, so get next twice.
-	spotifyHwnd := DllCall("GetWindow", "uint", spotifyHwnd, "uint", 2)
-	spotifyHwnd := DllCall("GetWindow", "uint", spotifyHwnd, "uint", 2)
-	SetFormat, IntegerFast, hex
-	Return spotifyHwnd
-}
-
-; Send a key to Spotify.
-spotifyKey(key) {
-	spotifyHwnd := getSpotifyHwnd()
-	; Chromium ignores keys when it isn't focused.
-	; Focus the document window without bringing the app to the foreground.
-	ControlFocus, Chrome_RenderWidgetHostHWND1, ahk_id %spotifyHwnd%
-	ControlSend, , %key%, ahk_id %spotifyHwnd%
-	Return
-}
-
-focus_spotify(){
-	currHwnd := WinExist("A")
-	spotifyHwnd := getSpotifyHwnd()
-	if (currHwnd=spotifyHwnd)
-	{
-		Winactivate, ahk_id %prevHwnd%
-		Return
-	}
-	Else
-	{
-		prevHwnd := currHwnd
-		WinActivate, ahk_id %spotifyHwnd%
-		Return
-	}
-}
-
 
 ; Press ~ to move up a folder in Explorer
 	#IfWinActive, ahk_class CabinetWClass
@@ -188,58 +148,4 @@ focus_spotify(){
 
 
 ; This is other stuff now
-PgUp::
-{
 
-	WinGetActiveTitle, winid
-	SetTitleMatchMode RegEx
-	IfWinActive, Visual Studio
-	{
-		currHwnd := WinExist("A")
-		MsgBox VSCOOOODE\n  %winid% ------ %currHwnd%
-		; SendInput, {Insert}
-		; return
-	} 
-	Else{
-		currHwnd := WinExist("A")
-		MsgBox not  %winid% ------ %currHwnd%
-		; spotifyHwnd := getSpotifyHwnd()
-		; if (currHwnd=spotifyHwnd)
-		; {
-		; 	Winactivate, ahk_id %prevHwnd%
-		; 	Return
-		; }
-		; Else
-		; {
-		; 	prevHwnd := currHwnd
-		; 	WinActivate, ahk_id %spotifyHwnd%
-		; 	Return
-		; }
-		; Send, PgUp
-	}
-	; for some reason the code below never works ¯\_(ツ)_/¯ 
-	; IfWinNotActive, Visual Studio 
-	; {
-	; 	focus_spotify()
-	; }
-	return
-}
-
-
-PgDn::
-{	
-	currHwnd := WinExist("A")
-	spotifyHwnd := getSpotifyHwnd()
-	if (currHwnd=spotifyHwnd)
-	{
-		Winactivate, ahk_id %prevHwnd%
-		Return
-	}
-	Else
-	{
-		prevHwnd := currHwnd
-		WinActivate, ahk_id %spotifyHwnd%
-		Return
-	}
-	; focus_spotify() ; doesn't return focus to original window
-}
