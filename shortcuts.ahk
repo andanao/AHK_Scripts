@@ -7,6 +7,9 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 	#IfWinActive
 	return
 
+CapsLock::LCtrl
+; ^CapsLock::CapsLock
+
 
 
 ::;;n::Adrian Danao-Schroeder
