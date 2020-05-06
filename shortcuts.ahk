@@ -8,29 +8,29 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 	return
 
 CapsLock::LCtrl
+#CapsLock::CapsLock
 ; ^CapsLock::CapsLock
 
 
 
-::;;n::Adrian Danao-Schroeder
-::;;e::adriandanao@gmail.com
-::;;w::adriandanao.com
-::;;p::301-318-6809
-::;;in::https://www.linkedin.com/in/adrian-danao-schroeder-a85698155/
-::;;umd::adanaosc@umd.edu
-::;;uid::114097347
-::;;ln::Danao-Schroeder
-::;;cn::{U+8BB8}{U+9053}{U+8FDC} ; 许道远
-::;;ae::Aerospace Engineering
-::;;umcp::University of Maryland College Park
-::;;1c1::13032869076
-::;;s::{U+00AF}{U+005C}{U+005F}{U+0028}{U+30C4}{U+0029}{U+005F}{U+002F}{U+00AF} ; ¯\_(ツ)_/¯ 
+::;n::Adrian Danao-Schroeder
+::;e::adriandanao@gmail.com
+::;w::adriandanao.com
+::;p::301-318-6809
+::;in::https://www.linkedin.com/in/adrian-danao-schroeder-a85698155/
+::;ln::Danao-Schroeder
+::;cn::{U+8BB8}{U+9053}{U+8FDC} ; 许道远
+::;ae::Aerospace Engineering
+::;umcp::University of Maryland College Park
+::;1c1::13032869076
+::;s::{U+00AF}{U+005C}{U+005F}{U+0028}{U+30C4}{U+0029}{U+005F}{U+002F}{U+00AF} ; ¯\_(ツ)_/¯ 
 
 
 ; Subs: Adresses; Dates; Special Char; Greek; Math
 	;		Addresses
-		::;;cp::8705 36th Av.`nCollege Park, MD `n20740
-		::;;ss::2308 Peggy Ln.`nSilver Spring, MD `n20910
+		::;cp::8705 36th Av.`nCollege Park, MD `n20740
+		::;ss::2308 Peggy Ln.`nSilver Spring, MD `n20910
+		::;ar::4020 Washington BLVD. `nArlington, VA `n22201
 
 	;		Dates
 		::;;jan::January
@@ -44,7 +44,7 @@ CapsLock::LCtrl
 		::;;oct::October
 		::;;nov::November
 		::;;dec::December
-		::;;d::
+		::;d::
 			FormatTime, CurrentDateTime,, yyyy-MM-dd
 			SendInput,%CurrentDateTime%
 		return
@@ -53,17 +53,17 @@ CapsLock::LCtrl
 			SendInput %CurrentDateTime%
 		return
 
-		::;;da::
+		::;da::
 		FormatTime, CurrentDateTime,,MM/dd/yyyy
 		SendInput %CurrentDateTime%
 		return
 
-		::;;df::
+		::;df::
 		FormatTime, CurrentDateTime,,MMMM dd, yyyy
 		SendInput %CurrentDateTime%
 		return
 
-		::;;m::
+		::;m::
 			FormatTime, CurrentDateTime,, yyyy-MM
 			SendInput,%CurrentDateTime%
 		return
