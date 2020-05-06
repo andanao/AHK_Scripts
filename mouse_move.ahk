@@ -7,15 +7,14 @@
 ; adjust the folowing 3 values to suit your circumstances
 ; ================================================================
 
-inactivity_limit=55	; measured in seconds
+inactivity_limit=300	; measured in seconds
 how_often_to_test=1	; measured in seconds
-show_tooltip=1       ; 1=show, anything else means hide
+show_tooltip=0       ; 1=show, anything else means hide
 
 ; ================================================================
 
 inactivity_limit_ms:=inactivity_limit*1000
 how_often_to_test_ms:=how_often_to_test*1000
-
 
 settimer, check_active, %how_often_to_test_ms%
 
@@ -35,7 +34,8 @@ if show_tooltip=1
 if A_TimeIdlePhysical > %inactivity_limit_ms%
 {
   mousemove,1,1,100, R	; down and right 1 pixel each time
-
+  sleep, 100
+  mousemove,-1,-1,100, R
   mm_cnt++	; tally number of times the mouse was artificially moved
 }
 
@@ -44,5 +44,5 @@ return
 
 ; these hotkeys are diagnostics, disable during normal use
 
-; esc::exitapp	
+;esc::exitapp	
 ; f10::reload
