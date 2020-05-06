@@ -7,9 +7,11 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 	#IfWinActive
 	return
 
-CapsLock::LCtrl
-#CapsLock::CapsLock
-; ^CapsLock::CapsLock
+	~Volume_Down::	SoundSet, -8 Return
+	~Volume_Up::	SoundSet, +8 Return
+
+	CapsLock::Ctrl
+	<^CapsLock::CapsLock
 
 
 
@@ -145,12 +147,6 @@ CapsLock::LCtrl
 		::;;12::{U+00BD}        	; ( ½ )
 
 ;		Common Acronyms			
-	::;;prc::People's Republic of China
-	::;;gmd::Guomingdang
-	::;;ccp::Chinese Communist Party
-	::;;us::United States
-	::;;usa::United States of America
-
 
 ; This is other stuff now
 
