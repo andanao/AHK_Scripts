@@ -4,13 +4,15 @@ import pprint
 import calendar
 # import pandas as pd
 from datetime import datetime 
-from toggl.TogglPy import Toggl #god i love python
+from toggl.TogglPy import Toggl as togglpy#god i love python
 
-class Toggl(Toggl):
+class Toggl(togglpy):
     toggl = Toggl()
     token = "089c874aefeb3e6a4d655c73819949be"
     toggl.setAPIKey(token)
     Projects = {}
+    def __init__(self):
+        self.getAllProjects()
 
     def stopRunningEntry(self):
         self.stopTimeEntry(self.currentRunningTimeEntry()['data']['id'])
@@ -34,3 +36,4 @@ class Toggl(Toggl):
 
 
 toggl = Toggl()
+pprint.pprint(toggl.Projects,width =2)
