@@ -18,8 +18,8 @@ class Toggl(Toggl):
 
 
 
-    def getAllProjects():
-        response = toggl.request("https://www.toggl.com/api/v8/clients")
+    def getAllProjects(self):
+        response = self.request("https://www.toggl.com/api/v8/clients")
         Projects = {}
         for client in response:
             # print("Client name: %s  Client id: %s" % (client['name'], client['id']))
@@ -28,10 +28,6 @@ class Toggl(Toggl):
                 Projects[proj['name']] = proj
                 # print("%s \t%s \t%s" % (proj['name'],client['name'],proj['id']))
         return Projects
-
-
-    def progress():
-        toggl.startTimeEntry("Toggl Tool Progress Fn",161116831)
 
     def startEntryFromProjectsList(input,Projects,Shortcuts):
         toggl.startTimeEntry("test desc",Projects[input]["id"])
