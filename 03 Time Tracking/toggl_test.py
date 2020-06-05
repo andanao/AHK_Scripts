@@ -10,28 +10,26 @@ class Toggl(Toggl):
     toggl = Toggl()
     token = "089c874aefeb3e6a4d655c73819949be"
     toggl.setAPIKey(token)
+    Projects = {}
 
     def stopRunningEntry(self):
         self.stopTimeEntry(self.currentRunningTimeEntry()['data']['id'])
 
 
 
-
-
     def getAllProjects(self):
         response = self.request("https://www.toggl.com/api/v8/clients")
-        Projects = {}
+        
         for client in response:
             # print("Client name: %s  Client id: %s" % (client['name'], client['id']))
-            temp = toggl.getClientProjects(id=client['id'])
+            temp = self.getClientProjects(id=client['id'])
             for proj in temp:
-                Projects[proj['name']] = proj
+                self.Projects[proj['name']] = proj
                 # print("%s \t%s \t%s" % (proj['name'],client['name'],proj['id']))
-        return Projects
 
-    def startEntryFromProjectsList(input,Projects,Shortcuts):
-        toggl.startTimeEntry("test desc",Projects[input]["id"])
-        print("%s started \nNot Complete" % (input))
+    def startEntryFromProjectsList(self,input,Shortcuts):
+        self.startTimeEntry("test desc",self.Projects[input]["id"])
+        print("Time entry started for:\n %s" % (input))
 
 
 
