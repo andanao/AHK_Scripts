@@ -30,13 +30,16 @@ class Toggl(togglpy):
         self.startTimeEntry("Testing Toggl Launcher",self.Projects[input]["id"])
         print("Time entry started for:\n %s" % (input))
 
+    def editTimeEntry(self):
+        print("TODO")
 
     def undoRecentTime(self,time):
         proj = self.currentRunningTimeEntry()['data']
-        pprint.pprint(proj,width =2)
+        time = datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc).isoformat()
+        excuse = "Lost focus and started doing other shit"
+        # pprint.pprint(proj,width =2)
         # toggl.createTimeEntry()
 
 
 
 toggl = Toggl()
-# pprint.pprint(toggl.Projects,width =2)
