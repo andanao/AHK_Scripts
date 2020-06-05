@@ -5,13 +5,14 @@ import calendar
 # import pandas as pd
 from datetime import datetime 
 from toggl.TogglPy import Toggl as togglpy#god i love python
-
+from toggl.TogglPy import Endpoints
 class Toggl(togglpy):
-    toggl = togglpy()
-    token = "089c874aefeb3e6a4d655c73819949be"
-    toggl.setAPIKey(token)
+    # toggl = togglpy()
+    # token = "089c874aefeb3e6a4d655c73819949be"
+    # toggl.setAPIKey(token)
     Projects = {}
-    def __init__(self):
+    def __init__(self,APIKey):
+        self.setAPIKey(APIKey)
         self.getAllProjects()
 
     def stopRunningEntry(self):
@@ -40,6 +41,8 @@ class Toggl(togglpy):
         # pprint.pprint(proj,width =2)
         # toggl.createTimeEntry()
 
+    def updateTimeEntry(self,parameters):
+        print("TODO")
 
-
-toggl = Toggl()
+token = "089c874aefeb3e6a4d655c73819949be"
+toggl = Toggl(token)
