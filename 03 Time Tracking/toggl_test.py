@@ -60,12 +60,14 @@ class Toggl(togglpy):
         if entry['command'] == 'start_entry':
             self.startTimeEntry(entry['desc'],entry['id'])
             print('Starting entry:\n\t',entry['desc'])
+
         elif entry['command'] == 'ask_entry':
-            desc = input("Enter Description:")
+            desc = entry['desc']+input("Enter Description:")
             self.startTimeEntry(desc,entry['id'])
-            print('Starting entry:\n\t',entry['desc'])
+            print('Starting entry:\n\t',desc)
+
         elif entry['command'] == 'stop_entry':
-            pass
+            self.stopRunningEntry()
         
 
 token = "089c874aefeb3e6a4d655c73819949be"
