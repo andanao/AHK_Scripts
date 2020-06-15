@@ -55,8 +55,15 @@ class Toggl(togglpy):
     def useShortcut(self,input):
         name =  get_close_matches(input,self.shortcuts,n=1)[0]
         entry = self.shortcuts[name]
-        print(entry)
+        # print(entry)
         
+        if entry['command'] == 'start_entry':
+            # self.startTimeEntry(entry['desc'],entry['id'])
+            print('Starting entry:\n\t',entry['desc'])
+        elif entry['command'] == 'ask_entry':
+            pass
+        elif entry['command'] == 'stop_entry':
+            pass
         
 
 token = "089c874aefeb3e6a4d655c73819949be"
