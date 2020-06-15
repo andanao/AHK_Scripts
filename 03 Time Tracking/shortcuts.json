@@ -36,8 +36,8 @@
     },
     "gym": {
         "id" : "161042542",
-        "desc" : "Please enter new description",
-        "command":"ask_entry"
+        "desc" : "Please enter new description at some point",
+        "command":"start_entry"
     },
     "hk": {
         "id" : "161043712",
@@ -66,7 +66,7 @@
     },
     "ool": {
         "id" : "161058102",
-        "desc" : "OOL # XXXXX",
+        "desc" : "OOL # ",
         "command":"ask_entry"
     },
     "tired": {
@@ -101,7 +101,7 @@
     },
     "book review": {
         "id" : "161043687",
-        "desc" : "Book Review for ENTER NAME PLEASE",
+        "desc" : "Book Review for",
         "command":"ask_entry"
     },
     "cad": {
