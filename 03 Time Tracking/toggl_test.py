@@ -1,9 +1,4 @@
-import requests
-import json
-import pprint
-import calendar
-# import pandas as pd
-from datetime import datetime 
+from json import load
 from toggl.TogglPy import Toggl as togglpy#god i love python
 from toggl.TogglPy import Endpoints
 from difflib import get_close_matches
@@ -16,11 +11,10 @@ class Toggl(togglpy):
         self.shortcuts_dir='shortcuts.json'
         self.loadShortcutsFile()
 
-
     def loadShortcutsFile(self):
         try:
             with open(self.shortcuts_dir, encoding ='utf-8') as f:
-                self.shortcuts = json.load(f)
+                self.shortcuts = load(f)
         except NotADirectoryError:
             print("file not found")
 
@@ -35,24 +29,6 @@ class Toggl(togglpy):
             for proj in temp:
                 self.Projects[proj['name']] = proj
                 # print("%s \t%s \t%s" % (proj['name'],client['name'],proj['id']))
-
-    def startEntryFromProjectsList(self,input,Shortcuts):
-        self.startTimeEntry("Testing Toggl Launcher",self.Projects[input]["id"])
-        print("Time entry started for:\n %s" % (input))
-
-    def editTimeEntry(self):
-        print("TODO")
-
-    def undoRecentTime(self,time):
-        # proj = self.currentRunningTimeEntry()['data']
-        # time = datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc).isoformat()
-        # excuse = "Lost focus and started doing other shit"
-        # pprint.pprint(proj,width =2)
-        # toggl.createTimeEntry()
-        print("NotImplemented")
-
-    def updateTimeEntry(self,parameters):
-        print("TODO")
 
     def useShortcut(self,input):
         name =  get_close_matches(input,self.shortcuts,n=1)[0]
