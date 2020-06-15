@@ -12,6 +12,14 @@ class Toggl(togglpy):
     def __init__(self,APIKey):
         self.setAPIKey(APIKey)
         self.getAllProjects()
+        self.loadShortcutsFile('shortcuts.json')
+
+    def loadShortcutsFile(self,dir):
+        try:
+            with open(dir, encoding ='utf-8') as f:
+                self.shortcuts = json.load(f)
+        except NotADirectoryError:
+            print("file not found")
 
     def stopRunningEntry(self):
         self.stopTimeEntry(self.currentRunningTimeEntry()['data']['id'])
@@ -33,16 +41,17 @@ class Toggl(togglpy):
         print("TODO")
 
     def undoRecentTime(self,time):
-        proj = self.currentRunningTimeEntry()['data']
-        time = datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc).isoformat()
-        excuse = "Lost focus and started doing other shit"
+        # proj = self.currentRunningTimeEntry()['data']
+        # time = datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc).isoformat()
+        # excuse = "Lost focus and started doing other shit"
         # pprint.pprint(proj,width =2)
         # toggl.createTimeEntry()
+        print("NotImplemented")
 
     def updateTimeEntry(self,parameters):
         print("TODO")
 
-
+    
 
 token = "089c874aefeb3e6a4d655c73819949be"
 toggl = Toggl(token)
