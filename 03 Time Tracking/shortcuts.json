@@ -1,0 +1,172 @@
+{
+    "onfood": {
+        "id" : "161043718",
+        "desc" : "On Food and Cooking",
+        "command":"start_entry"
+    },
+    "bilingue": {
+        "id" : "161043718",
+        "desc" : "The Bilingual Mind",
+        "command":"start_entry"
+    },
+    "structure": {
+        "id" : "161043718",
+        "desc" : "The Structure of Scientific Revolutions",
+        "command":"start_entry"
+    },
+    "admin": {
+        "id" : "161043709",
+        "desc" : "Admin",
+        "command":"start_entry"
+    },
+    "auto": {
+        "id" : "161043703",
+        "desc" : "Automation",
+        "command":"start_entry"
+    },
+    "cook": {
+        "id" : "161043716",
+        "desc" : "Cooking",
+        "command":"start_entry"
+    },
+    "guitar": {
+        "id" : "161043754",
+        "desc" : "Guitar",
+        "command":"start_entry"
+    },
+    "gym": {
+        "id" : "161042542",
+        "desc" : "Please enter new description",
+        "command":"ask_entry"
+    },
+    "hk": {
+        "id" : "161043712",
+        "desc" : "Housekeeping",
+        "command":"start_entry"
+    },
+    "eat": {
+        "id" : "161063272",
+        "desc" : "Eating",
+        "command":"start_entry"
+    },
+    "meet": {
+        "id" : "161043697",
+        "desc" : "Some work meeting of some sort",
+        "command":"start_entry"
+    },
+    "theory": {
+        "id" : "161043770",
+        "desc" : "Music Theory",
+        "command":"start_entry"
+    },
+    "train": {
+        "id" : "161033814",
+        "desc" : "O3b Training",
+        "command":"start_entry"
+    },
+    "ool": {
+        "id" : "161058102",
+        "desc" : "OOL # XXXXX",
+        "command":"ask_entry"
+    },
+    "tired": {
+        "id" : "161043795",
+        "desc" : "Being a lazy fuck",
+        "command":"start_entry"
+    },
+    "piano": {
+        "id" : "161300126",
+        "desc" : "Piano",
+        "command":"start_entry"
+    },
+    "diary": {
+        "id" : "161043687",
+        "desc" : "Diary",
+        "command":"start_entry"
+    },
+    "week": {
+        "id" : "161043687",
+        "desc" : "Weekly Review",
+        "command":"start_entry"
+    },
+    "month": {
+        "id" : "161043687",
+        "desc" : "Monthly Review",
+        "command":"start_entry"
+    },
+    "quarter": {
+        "id" : "161043687",
+        "desc" : "Quarterly Review",
+        "command":"start_entry"
+    },
+    "book review": {
+        "id" : "161043687",
+        "desc" : "Book Review for ENTER NAME PLEASE",
+        "command":"ask_entry"
+    },
+    "cad": {
+        "id" : "161043763",
+        "desc" : "CAD",
+        "command":"start_entry"
+    },
+    "daily": {
+        "id" : "161068268",
+        "desc" : "Daily Tasks",
+        "command":"start_entry"
+    },
+    "ses misc": {
+        "id" : "161068268",
+        "desc" : "",
+        "command":"ask_entry"
+    },
+    "friends": {
+        "id" : "161033837",
+        "desc" : "",
+        "command":"ask_entry"
+    },
+    "toggl": {
+        "id" : "161116831",
+        "desc" : "Toggl Launcher",
+        "command":"start_entry"
+    },
+    "feedly": {
+        "id" : "161043720",
+        "desc" : "Feedly Feed",
+        "command":"start_entry"
+    },
+    "youtube": {
+        "id" : "161043720",
+        "desc" : "Youtube Website",
+        "command":"start_entry"
+    },
+    "shufa": {
+        "id" : "161043744",
+        "desc" : "书法",
+        "command":"start_entry"
+    },
+    "chincast": {
+        "id" : "161043779",
+        "desc" : "听博客",
+        "command":"start_entry"
+    },
+    "vocab": {
+        "id" : "161043733",
+        "desc" : "生词",
+        "command":"start_entry"
+    },
+    "ctv": {
+        "id" : "161043740",
+        "desc" : "电影",
+        "command":"start_entry"
+    },
+    "kanshu": {
+        "id" : "161215753",
+        "desc" : "活着",
+        "command":"start_entry"
+    },
+    "class": {
+        "id" : "161419390",
+        "desc" : "italki",
+        "command":"start_entry"
+    }   
+}
