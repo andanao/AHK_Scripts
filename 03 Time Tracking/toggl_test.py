@@ -62,7 +62,7 @@ class Toggl(togglpy):
             print('Starting entry:\n\t',entry['desc'])
 
         elif entry['command'] == 'ask_entry':
-            desc = entry['desc']+input("Enter Description:")
+            desc = name #entry['desc']# + input("Enter Description:")
             self.startTimeEntry(desc,entry['id'])
             print('Starting entry:\n\t',desc)
 
