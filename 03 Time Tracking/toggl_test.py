@@ -6,12 +6,13 @@ import calendar
 from datetime import datetime 
 from toggl.TogglPy import Toggl as togglpy#god i love python
 from toggl.TogglPy import Endpoints
+from difflib import get_close_matches
 
 class Toggl(togglpy):
     Projects = {}
     def __init__(self,APIKey):
         self.setAPIKey(APIKey)
-        self.getAllProjects()
+        # self.getAllProjects()\
         self.loadShortcutsFile('shortcuts.json')
 
     def loadShortcutsFile(self,dir):
@@ -51,7 +52,12 @@ class Toggl(togglpy):
     def updateTimeEntry(self,parameters):
         print("TODO")
 
-    
+    def useShortcut(self,input):
+        name =  get_close_matches(input,self.shortcuts,n=1)[0]
+        entry = self.shortcuts[name]
+        print(entry)
+        
+        
 
 token = "089c874aefeb3e6a4d655c73819949be"
 toggl = Toggl(token)
