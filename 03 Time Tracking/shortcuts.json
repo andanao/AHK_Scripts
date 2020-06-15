@@ -173,5 +173,11 @@
         "id" : "",
         "desc" : "",
         "command":"stop_entry"
+    },
+    "nap": {
+        "id" : "161427785",
+        "desc" : "Quick Nap <20m",
+        "command":"start_entry"
     }
+    
 }

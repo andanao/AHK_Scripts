@@ -13,11 +13,13 @@ class Toggl(togglpy):
     def __init__(self,APIKey):
         self.setAPIKey(APIKey)
         # self.getAllProjects()\
-        self.loadShortcutsFile('shortcuts.json')
+        self.shortcuts_dir='shortcuts.json'
+        self.loadShortcutsFile()
 
-    def loadShortcutsFile(self,dir):
+
+    def loadShortcutsFile(self):
         try:
-            with open(dir, encoding ='utf-8') as f:
+            with open(self.shortcuts_dir, encoding ='utf-8') as f:
                 self.shortcuts = json.load(f)
         except NotADirectoryError:
             print("file not found")
