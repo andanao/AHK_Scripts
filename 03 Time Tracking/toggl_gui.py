@@ -1,11 +1,12 @@
 from tkinter import *
 from tkinter import ttk, filedialog
-
+from toggl_test import Toggl
 
 class GUI:
-    def __init__(self):
+    def __init__(self,token):
         print('just work please')
         self.build_gui()
+        self.toggl = Toggl(token)
 
     def build_gui(self):
         self.root = Tk()
@@ -36,22 +37,12 @@ class GUI:
 
         #Define keyboard shortcuts while in window
         self.root.bind("<Escape>", self.exit)
-        self.root.bind('<Return>',self.next_cell)
+        # self.root.bind('<Return>',self.next_cell)
         self.root.mainloop()
     
     def exit(self, event):
         self.root.destroy()
-
-    def next_cell(self, event):
-        if not html_link.get():
-            user_entry.focus()
-        elif html_link.get() and not file_name.get():
-            file_entry.focus()
-        else:
-            convert()
-            user_entry.delete('0',END)
-            file_entry.delete('0',END)
-            user_entry.focus()
+        
 
     def refresh(self):
         self.print2gui('\n\n---\tConverting from UCIS to AILA\t---\n')
@@ -78,5 +69,5 @@ class GUI:
         self.text_box.configure(state="disabled")
     
     
-
-gui = GUI()
+token = "089c874aefeb3e6a4d655c73819949be"
+gui = GUI(token)
