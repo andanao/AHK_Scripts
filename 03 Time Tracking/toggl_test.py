@@ -31,7 +31,11 @@ class Toggl(togglpy):
                 # print("%s \t%s \t%s" % (proj['name'],client['name'],proj['id']))
 
     def useShortcut(self,input):
-        name =  get_close_matches(input,self.shortcuts,n=1)[0]
+        try:
+            name =  get_close_matches(input,self.shortcuts,n=1)[0]
+        except:
+            print('No entry found')
+
         entry = self.shortcuts[name]
         # print(entry)
         
