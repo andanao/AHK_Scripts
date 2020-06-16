@@ -7,6 +7,38 @@ class GUI:
         print('just work please')
         self.build_gui()
 
+    def build_gui(self):
+        root = Tk()
+        root.title("UCIS to AilaLink UI")
+        root.resizable(False, False)
+
+        mainframe = ttk.Frame(root, padding="3 3 12 12")
+        mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+        root.attributes("-topmost", True)
+        root.columnconfigure(0, weight=1)
+        root.rowconfigure(0, weight=1)
+
+        html_link = StringVar()
+        file_name = StringVar()
+
+        user_entry = ttk.Entry(mainframe,width=60, textvariable=html_link, font='consolas')
+        user_entry.grid(column = 1, row=1, columnspan = 3)
+
+        refresh_button = ttk.Button(mainframe, text = u'\u27F3',command=convert, width=10)
+        refresh_button.grid(column=4,row=1, columnspan=2,sticky=E)
+
+        text_box = Text(mainframe,width=70,height=8, font='consolas',state='disabled', background='black',fg='white')
+        text_box.grid(column=1,row=4,columnspan=4)
+
+        # pad 5px in all directions
+        for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
+
+        user_entry.focus()
+
+        #Define keyboard shortcuts while in window
+        root.bind("<Escape>", exit)
+        root.bind('<Return>',next_cell)
+        root.mainloop()
     def exit(self, event):
         root.destroy()
 
@@ -45,37 +77,6 @@ class GUI:
         text_box.see(END)
         text_box.configure(state="disabled")
     
-    def build_gui(self):
-        root = Tk()
-        root.title("UCIS to AilaLink UI")
-        root.resizable(False, False)
-
-        mainframe = ttk.Frame(root, padding="3 3 12 12")
-        mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
-        root.attributes("-topmost", True)
-        root.columnconfigure(0, weight=1)
-        root.rowconfigure(0, weight=1)
-
-        html_link = StringVar()
-        file_name = StringVar()
-
-        user_entry = ttk.Entry(mainframe,width=60, textvariable=html_link, font='consolas')
-        user_entry.grid(column = 1, row=1, columnspan = 3)
-
-        refresh_button = ttk.Button(mainframe, text = u'\u27F3',command=convert, width=10)
-        refresh_button.grid(column=4,row=1, columnspan=2,sticky=E)
-
-        text_box = Text(mainframe,width=70,height=8, font='consolas',state='disabled', background='black',fg='white')
-        text_box.grid(column=1,row=4,columnspan=4)
-
-        # pad 5px in all directions
-        for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
-
-        user_entry.focus()
-
-        #Define keyboard shortcuts while in window
-        root.bind("<Escape>", exit)
-        root.bind('<Return>',next_cell)
-        root.mainloop()
+    
 
 gui = GUI()
