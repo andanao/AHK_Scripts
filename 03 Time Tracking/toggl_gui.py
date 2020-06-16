@@ -8,15 +8,15 @@ class GUI:
         self.build_gui()
 
     def build_gui(self):
-        root = Tk()
-        root.title("UCIS to AilaLink UI")
-        root.resizable(False, False)
+        self.root = Tk()
+        self.root.title("UCIS to AilaLink UI")
+        self.root.resizable(False, False)
 
-        mainframe = ttk.Frame(root, padding="3 3 12 12")
+        mainframe = ttk.Frame(self.root, padding="3 3 12 12")
         mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
-        root.attributes("-topmost", True)
-        root.columnconfigure(0, weight=1)
-        root.rowconfigure(0, weight=1)
+        self.root.attributes("-topmost", True)
+        self.root.columnconfigure(0, weight=1)
+        self.root.rowconfigure(0, weight=1)
 
         html_link = StringVar()
         file_name = StringVar()
@@ -24,23 +24,24 @@ class GUI:
         user_entry = ttk.Entry(mainframe,width=60, textvariable=html_link, font='consolas')
         user_entry.grid(column = 1, row=1, columnspan = 3)
 
-        refresh_button = ttk.Button(mainframe, text = u'\u27F3',command=convert, width=10)
+        refresh_button = ttk.Button(mainframe, text = u'\u27F3',command=self.refresh, width=10)
         refresh_button.grid(column=4,row=1, columnspan=2,sticky=E)
 
         text_box = Text(mainframe,width=70,height=8, font='consolas',state='disabled', background='black',fg='white')
         text_box.grid(column=1,row=4,columnspan=4)
 
         # pad 5px in all directions
-        for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
+        for child in mainframe.winfo_children(): child.grid_configure(padx=2, pady=2)
 
-        user_entry.focus()
+        # user_entry.focus()
 
         #Define keyboard shortcuts while in window
-        root.bind("<Escape>", exit)
-        root.bind('<Return>',next_cell)
-        root.mainloop()
+        self.root.bind("<Escape>", self.exit)
+        self.root.bind('<Return>',self.next_cell)
+        self.root.mainloop()
+    
     def exit(self, event):
-        root.destroy()
+        self.root.destroy()
 
     def next_cell(self, event):
         if not html_link.get():
@@ -53,7 +54,7 @@ class GUI:
             file_entry.delete('0',END)
             user_entry.focus()
 
-    def convert(self):
+    def refresh(self):
         print2gui('\n\n---\tConverting from UCIS to AILA\t---\n')
         fname = file_name.get()
         print2gui("\nlink:\t"+html_link.get()+"\n")
