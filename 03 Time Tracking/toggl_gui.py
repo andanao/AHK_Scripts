@@ -45,22 +45,8 @@ class GUI:
         
 
     def refresh(self):
-        self.print2gui('\n\n---\tConverting from UCIS to AILA\t---\n')
-        # fname = file_name.get()
-        # self.print2gui("\nlink:\t"+html_link.get()+"\n")
-        # print2gui("File:\t"+fname+"\n")
-
-        # if file_dir_default.get():
-        #     # decided to not print to gui if just using default
-        #     # ucis_2_aila(html_link.get(),fname) 
-        #     pass
-        # else:
-        #     file_dir = filedialog.askdirectory()
-        #     file_dir = file_dir.replace('/','\\')+'\\'
-        #     print2gui('Output Directory:\t'+file_dir+"\n")
-        #     # ucis_2_aila(html_link.get(),fname,file_dir)
-        #     pass
-        self.print2gui('\n---\tConversion Complete\t---')
+        self.print2gui('\n\n---\Refreshing Shortcuts File\t---\n')
+        self.toggl.loadShortcutsFile()
 
     def print2gui(self, string):
         self.text_box.configure(state="normal")
