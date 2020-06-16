@@ -18,17 +18,16 @@ class GUI:
         self.root.columnconfigure(0, weight=1)
         self.root.rowconfigure(0, weight=1)
 
-        html_link = StringVar()
-        file_name = StringVar()
+        self.entry_string = StringVar()
 
-        user_entry = ttk.Entry(mainframe,width=60, textvariable=html_link, font='consolas')
+        user_entry = ttk.Entry(mainframe,width=60, textvariable=self.entry_string, font='consolas')
         user_entry.grid(column = 1, row=1, columnspan = 3)
 
         refresh_button = ttk.Button(mainframe, text = u'\u27F3',command=self.refresh, width=10)
         refresh_button.grid(column=4,row=1, columnspan=2,sticky=E)
 
-        text_box = Text(mainframe,width=70,height=8, font='consolas',state='disabled', background='black',fg='white')
-        text_box.grid(column=1,row=4,columnspan=4)
+        self.text_box = Text(mainframe,width=70,height=8, font='consolas',state='disabled', background='black',fg='white')
+        self.text_box.grid(column=1,row=4,columnspan=4)
 
         # pad 5px in all directions
         for child in mainframe.winfo_children(): child.grid_configure(padx=2, pady=2)
@@ -55,28 +54,28 @@ class GUI:
             user_entry.focus()
 
     def refresh(self):
-        print2gui('\n\n---\tConverting from UCIS to AILA\t---\n')
-        fname = file_name.get()
-        print2gui("\nlink:\t"+html_link.get()+"\n")
-        print2gui("File:\t"+fname+"\n")
+        self.print2gui('\n\n---\tConverting from UCIS to AILA\t---\n')
+        # fname = file_name.get()
+        # self.print2gui("\nlink:\t"+html_link.get()+"\n")
+        # print2gui("File:\t"+fname+"\n")
 
-        if file_dir_default.get():
-            # decided to not print to gui if just using default
-            # ucis_2_aila(html_link.get(),fname) 
-            pass
-        else:
-            file_dir = filedialog.askdirectory()
-            file_dir = file_dir.replace('/','\\')+'\\'
-            print2gui('Output Directory:\t'+file_dir+"\n")
-            # ucis_2_aila(html_link.get(),fname,file_dir)
-            pass
-        print2gui('\n---\tConversion Complete\t---')
+        # if file_dir_default.get():
+        #     # decided to not print to gui if just using default
+        #     # ucis_2_aila(html_link.get(),fname) 
+        #     pass
+        # else:
+        #     file_dir = filedialog.askdirectory()
+        #     file_dir = file_dir.replace('/','\\')+'\\'
+        #     print2gui('Output Directory:\t'+file_dir+"\n")
+        #     # ucis_2_aila(html_link.get(),fname,file_dir)
+        #     pass
+        self.print2gui('\n---\tConversion Complete\t---')
 
     def print2gui(self, string):
-        text_box.configure(state="normal")
-        text_box.insert(END,string)
-        text_box.see(END)
-        text_box.configure(state="disabled")
+        self.text_box.configure(state="normal")
+        self.text_box.insert(END,string)
+        self.text_box.see(END)
+        self.text_box.configure(state="disabled")
     
     
 
