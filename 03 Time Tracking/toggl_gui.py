@@ -82,7 +82,7 @@ class GUI(object):
         builds the GUI, you shouldn't need to be calling this other than in thi init
         """
         self.root = Tk()
-        self.root.title("UCIS to AilaLink UI")
+        self.root.title("Toggl Shortcuts")
         self.root.resizable(False, False)
 
         mainframe = ttk.Frame(self.root, padding="3 3 12 12")
@@ -113,7 +113,8 @@ class GUI(object):
         self.root.mainloop()
     
     def exit(self, event):
-        self.root.destroy()
+        # self.root.destroy()
+        self.root.iconify()
         
     def refresh(self):
         self.print2gui('\n---\tRefreshing Shortcuts File\t---\n')
