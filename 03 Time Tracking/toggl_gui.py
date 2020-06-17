@@ -10,7 +10,6 @@ class Toggl(togglpy):
     Projects = {}
     def __init__(self,APIKey):
         self.setAPIKey(APIKey)
-        # self.getAllProjects()\
         self.shortcuts_dir='shortcuts.json'
         self.loadShortcutsFile()
 
@@ -33,7 +32,6 @@ class Toggl(togglpy):
 
     def useShortcut(self,input):
         answer = {}
-        
         try:
             name =  get_close_matches(input,self.shortcuts,n=1)[0]
         except:
@@ -61,7 +59,6 @@ class Toggl(togglpy):
                 answer['dur'] = response['data']['duration']
 
             answer['command'] = entry['command']
-            # answer['desc'] = response['data']['description']
         
         return answer
 
@@ -83,7 +80,6 @@ class GUI(object):
         self.root.rowconfigure(0, weight=1)
 
         self.entry_string = StringVar()
-        # self.entry_string = ''
 
         user_entry = ttk.Entry(mainframe,width=60, textvariable=self.entry_string, font='consolas')
         user_entry.grid(column = 1, row=1, columnspan = 3)
