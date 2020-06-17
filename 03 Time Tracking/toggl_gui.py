@@ -2,9 +2,9 @@ from difflib import get_close_matches
 from json import load
 from toggl.TogglPy import Toggl as togglpy#god i love python
 from toggl.TogglPy import Endpoints
-from tkinter import *
-from tkinter import ttk, filedialog
-from datetime import datetime
+# from tkinter import *
+from tkinter import ttk,N,E,S,W, END,Tk,StringVar, Text
+from datetime import datetime, timedelta
 
 class Toggl(togglpy):
     Projects = {}
@@ -132,18 +132,20 @@ class GUI(object):
     
     def run_shortcut(self,event):
         """
-        On ttk event:
+        On TTK event:
             Takes entry in GUI text input field as input to toggl.useShortcut
             Clears input field
             Prints response to GUI
         """
-        response = self.toggl.useShortcut(self.entry_string.get())
+        send_string = self.entry_string.get()
         self.entry_string.set('')
+        self.print2gui("sent: "+ send_string)
+        response = self.toggl.useShortcut(send_string)
         cmd_string = ' '*5+response['command']+' '*(5+(11-len(response['command']))) #it looks like a mess but i just want things to print pretty ok?
         self.print2gui("\n------"+cmd_string+"------\n\n\t")
         self.print2gui(response['desc']+'\n\t'+response['time']+"\n")
         if(response['command']=='stop_entry'):
-            self.print2gui('\tDuration:\t'+str(response['dur']))
+            self.print2gui('\tDuration:\t'+str(timedelta(seconds=response['dur'])))
         self.print2gui('\n\n')
 
     
