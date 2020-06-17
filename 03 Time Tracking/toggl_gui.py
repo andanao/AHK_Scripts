@@ -6,6 +6,7 @@ from toggl.TogglPy import Endpoints
 from tkinter import ttk,N,E,S,W, END,Tk,StringVar, Text, PhotoImage
 from datetime import datetime, timedelta
 from os import getcwd
+from ahk import AHK
 
 class Toggl(togglpy):
     Projects = {}
@@ -14,7 +15,6 @@ class Toggl(togglpy):
         self.setAPIKey(APIKey)
         self.directory = getcwd()
         self.shortcuts_dir=self.directory+'\\shortcuts.json'
-
         self.loadShortcutsFile()
 
     def loadShortcutsFile(self): #this loads the predefined shortcuts file
@@ -80,7 +80,8 @@ class GUI(object):
     def __init__(self,token):
         self.toggl = Toggl(token)
         self.directory = getcwd()
-        self.icon = self.directory+'\\toggl-512.png'
+        self.icon = self.directory+'\\toggl-32.png'
+        self.ahk = AHK()
         self.build_gui()
 
     def build_gui(self):
