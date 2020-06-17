@@ -3,14 +3,18 @@ from json import load
 from toggl.TogglPy import Toggl as togglpy#god i love python
 from toggl.TogglPy import Endpoints
 # from tkinter import *
-from tkinter import ttk,N,E,S,W, END,Tk,StringVar, Text
+from tkinter import ttk,N,E,S,W, END,Tk,StringVar, Text, PhotoImage
 from datetime import datetime, timedelta
+from os import getcwd
 
 class Toggl(togglpy):
     Projects = {}
+    # directory = getcwd()
     def __init__(self,APIKey):
         self.setAPIKey(APIKey)
-        self.shortcuts_dir='shortcuts.json'
+        self.directory = getcwd()
+        self.shortcuts_dir=self.directory+'\\shortcuts.json'
+
         self.loadShortcutsFile()
 
     def loadShortcutsFile(self): #this loads the predefined shortcuts file
@@ -75,6 +79,8 @@ class Toggl(togglpy):
 class GUI(object):
     def __init__(self,token):
         self.toggl = Toggl(token)
+        self.directory = getcwd()
+        self.icon = self.directory+'\\toggl-512.png'
         self.build_gui()
 
     def build_gui(self):
@@ -90,6 +96,7 @@ class GUI(object):
         self.root.attributes("-topmost", True)
         self.root.columnconfigure(0, weight=1)
         self.root.rowconfigure(0, weight=1)
+        self.root.iconphoto(True, PhotoImage(file = self.icon))
 
         self.entry_string = StringVar()
 
@@ -113,8 +120,8 @@ class GUI(object):
         self.root.mainloop()
     
     def exit(self, event):
-        # self.root.destroy()
-        self.root.iconify()
+        self.root.destroy()
+        # self.root.iconify()
         
     def refresh(self):
         self.print2gui('\n---\tRefreshing Shortcuts File\t---\n')

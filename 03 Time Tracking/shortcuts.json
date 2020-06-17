@@ -39,6 +39,26 @@
         "desc" : "Please enter new description at some point",
         "command":"start_entry"
     },
+    "g push": {
+        "id" : "161042542",
+        "desc" : "Push",
+        "command":"start_entry"
+    },
+    "g pull": {
+        "id" : "161042542",
+        "desc" : "Pull",
+        "command":"start_entry"
+    },
+    "g legs": {
+        "id" : "161042542",
+        "desc" : "Legs",
+        "command":"start_entry"
+    },
+    "g run": {
+        "id" : "161042542",
+        "desc" : "Run",
+        "command":"start_entry"
+    },
     "hk": {
         "id" : "161043712",
         "desc" : "Housekeeping",
