@@ -1,9 +1,9 @@
-from tkinter import *
-from tkinter import ttk, filedialog
+from difflib import get_close_matches
 from json import load
 from toggl.TogglPy import Toggl as togglpy#god i love python
 from toggl.TogglPy import Endpoints
-from difflib import get_close_matches
+from tkinter import *
+from tkinter import ttk, filedialog
 
 class Toggl(togglpy):
     Projects = {}
@@ -33,32 +33,32 @@ class Toggl(togglpy):
                 # print("%s \t%s \t%s" % (proj['name'],client['name'],proj['id']))
 
     def useShortcut(self,input):
-        try:
-            name =  get_close_matches(input,self.shortcuts,n=1)[0]
-        except:
-            print('No entry found')
+        name =' '
+        # try:
+        name =  get_close_matches(input,self.shortcuts,n=1)[0]
+        # except:
+        #     print('No entry found')
 
         entry = self.shortcuts[name]
         # print(entry)
         
         if entry['command'] == 'start_entry':
             self.startTimeEntry(entry['desc'],entry['id'])
-            print('Starting entry:\n\t',entry['desc'])
+            # print('Starting entry:\n\t',entry['desc'])
 
         elif entry['command'] == 'ask_entry':
             desc = name #entry['desc']# + input("Enter Description:")
             self.startTimeEntry(desc,entry['id'])
-            print('Starting entry:\n\t',desc)
+            # print('Starting entry:\n\t',desc)
 
         elif entry['command'] == 'stop_entry':
             self.stopRunningEntry()
 
 
-class GUI:
+class GUI(object):
     def __init__(self,token):
-        print('just work please')
-        self.build_gui()
         self.toggl = Toggl(token)
+        self.build_gui()
 
     def build_gui(self):
         self.root = Tk()
@@ -72,6 +72,7 @@ class GUI:
         self.root.rowconfigure(0, weight=1)
 
         self.entry_string = StringVar()
+        # self.entry_string = ''
 
         user_entry = ttk.Entry(mainframe,width=60, textvariable=self.entry_string, font='consolas')
         user_entry.grid(column = 1, row=1, columnspan = 3)
@@ -97,7 +98,7 @@ class GUI:
         
     def refresh(self):
         self.print2gui('\n---\tRefreshing Shortcuts File\t---\n')
-        self.toggl.loadShortcutsFile()
+        # self.toggl.loadShortcutsFile()
 
     def print2gui(self, string):
         self.text_box.configure(state="normal")
@@ -106,8 +107,11 @@ class GUI:
         self.text_box.configure(state="disabled")
     
     def run_shortcut(self,event):
-        self.toggl.useShortcut(self.entry_string)
+        self.print2gui(self.entry_string.get())
+        self.toggl.useShortcut(self.entry_string.get())
+        self.entry_string.set('')
 
     
 token = "089c874aefeb3e6a4d655c73819949be"
 gui = GUI(token)
+# gui.toggl.useShortcut('toggl')

@@ -44,6 +44,11 @@
         "desc" : "Housekeeping",
         "command":"start_entry"
     },
+    "groceries": {
+        "id" : "161043712",
+        "desc" : "Groceries",
+        "command":"start_entry"
+    },
     "eat": {
         "id" : "161063272",
         "desc" : "Eating",
