@@ -13,7 +13,7 @@ class Toggl(togglpy):
         self.shortcuts_dir='shortcuts.json'
         self.loadShortcutsFile()
 
-    def loadShortcutsFile(self):
+    def loadShortcutsFile(self): #this loads the predefined shortcuts file
         try:
             with open(self.shortcuts_dir, encoding ='utf-8') as f:
                 self.shortcuts = load(f)
@@ -23,7 +23,11 @@ class Toggl(togglpy):
     def stopRunningEntry(self):
         return self.stopTimeEntry(self.currentRunningTimeEntry()['data']['id'])
 
-    def getAllProjects(self):
+    def getAllProjects(self): 
+        """
+        Get all projects and add it to Projects dictionary within Toggl object
+        Will not get tasks in project
+        """
         response = self.request("https://www.toggl.com/api/v8/clients")
         for client in response:
             temp = self.getClientProjects(id=client['id'])
@@ -31,6 +35,11 @@ class Toggl(togglpy):
                 self.Projects[proj['name']] = proj
 
     def useShortcut(self,input):
+        """
+        Use a shortcut defined in the shortcuts .json file
+        
+        Returns: command, description, time 
+        """
         answer = {}
         try:
             name =  get_close_matches(input,self.shortcuts,n=1)[0]
@@ -69,6 +78,9 @@ class GUI(object):
         self.build_gui()
 
     def build_gui(self):
+        """
+        builds the GUI, you shouldn't need to be calling this other than in thi init
+        """
         self.root = Tk()
         self.root.title("UCIS to AilaLink UI")
         self.root.resizable(False, False)
@@ -108,12 +120,23 @@ class GUI(object):
         self.toggl.loadShortcutsFile()
 
     def print2gui(self, string):
+        """
+        Prints to the GUI large text box
+        
+        Requires input type string
+        """
         self.text_box.configure(state="normal")
         self.text_box.insert(END,string)
         self.text_box.see(END)
         self.text_box.configure(state="disabled")
     
     def run_shortcut(self,event):
+        """
+        On ttk event:
+            Takes entry in GUI text input field as input to toggl.useShortcut
+            Clears input field
+            Prints response to GUI
+        """
         response = self.toggl.useShortcut(self.entry_string.get())
         self.entry_string.set('')
         cmd_string = ' '*5+response['command']+' '*(5+(11-len(response['command']))) #it looks like a mess but i just want things to print pretty ok?
