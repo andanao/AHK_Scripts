@@ -4,6 +4,7 @@ from toggl.TogglPy import Toggl as togglpy#god i love python
 from toggl.TogglPy import Endpoints
 from tkinter import *
 from tkinter import ttk, filedialog
+from datetime import datetime
 
 class Toggl(togglpy):
     Projects = {}
@@ -26,33 +27,37 @@ class Toggl(togglpy):
     def getAllProjects(self):
         response = self.request("https://www.toggl.com/api/v8/clients")
         for client in response:
-            # print("Client name: %s  Client id: %s" % (client['name'], client['id']))
             temp = self.getClientProjects(id=client['id'])
             for proj in temp:
                 self.Projects[proj['name']] = proj
-                # print("%s \t%s \t%s" % (proj['name'],client['name'],proj['id']))
 
     def useShortcut(self,input):
+        answer = {}
+        answer['time'] = datetime.now().strftime("%H:%M")
         try:
             name =  get_close_matches(input,self.shortcuts,n=1)[0]
         except:
-            return 'No entry found'
+            answer['desc'] = response['data']['description'] 
+                
         else:
             entry = self.shortcuts[name]
-            # print(entry)
+
             
             if entry['command'] == 'start_entry':
                 response = self.startTimeEntry(entry['desc'],entry['id'])
-                # print('Starting entry:\n\t',entry['desc'])
+
 
             elif entry['command'] == 'ask_entry':
                 desc = name #entry['desc']# + input("Enter Description:")
                 response = self.startTimeEntry(desc,entry['id'])
-                # print('Starting entry:\n\t',desc)
+
 
             elif entry['command'] == 'stop_entry':
                 response = self.stopRunningEntry()
-            return response
+
+            answer['desc'] = response['data']['description']
+        
+        return answer
 
 
 class GUI(object):
@@ -109,7 +114,7 @@ class GUI(object):
     def run_shortcut(self,event):
         self.print2gui(self.entry_string.get())
         response = self.toggl.useShortcut(self.entry_string.get())
-        self.print2gui(response)
+        # self.print2gui(response)
         self.entry_string.set('')
 
     
