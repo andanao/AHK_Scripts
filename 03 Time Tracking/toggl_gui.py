@@ -37,7 +37,9 @@ class Toggl(togglpy):
         try:
             name =  get_close_matches(input,self.shortcuts,n=1)[0]
         except:
-            answer['desc'] = response['data']['description'] 
+            answer['command'] = 'ERROR'
+            answer['desc'] = 'Entry Not Found !' 
+            answer['time'] = ''
                 
         else:
             entry = self.shortcuts[name]
@@ -45,17 +47,20 @@ class Toggl(togglpy):
             
             if entry['command'] == 'start_entry':
                 response = self.startTimeEntry(entry['desc'],entry['id'])
+                answer['desc'] = response['data']['description']
 
 
             elif entry['command'] == 'ask_entry':
-                desc = name #entry['desc']# + input("Enter Description:")
+                desc = name
                 response = self.startTimeEntry(desc,entry['id'])
-
+                answer['desc'] = response['data']['description']
 
             elif entry['command'] == 'stop_entry':
                 response = self.stopRunningEntry()
+                answer['desc'] = 'jsut work pls'#response['data']['description']
 
-            answer['desc'] = response['data']['description']
+            answer['command'] = entry['command']
+            # answer['desc'] = response['data']['description']
         
         return answer
 
@@ -112,10 +117,13 @@ class GUI(object):
         self.text_box.configure(state="disabled")
     
     def run_shortcut(self,event):
-        self.print2gui(self.entry_string.get())
+        # self.print2gui(self.entry_string.get())
         response = self.toggl.useShortcut(self.entry_string.get())
-        # self.print2gui(response)
         self.entry_string.set('')
+
+        self.print2gui("\n---\t"+response['command']+"\t---\n\t")
+        self.print2gui(response['desc']+'\n\t'+response['time']+"\n\n")
+        
 
     
 token = "089c874aefeb3e6a4d655c73819949be"
