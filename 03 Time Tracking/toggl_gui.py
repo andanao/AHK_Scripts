@@ -117,7 +117,6 @@ class GUI(object):
         self.text_box.configure(state="disabled")
     
     def run_shortcut(self,event):
-        # self.print2gui(self.entry_string.get())
         response = self.toggl.useShortcut(self.entry_string.get())
         self.entry_string.set('')
 
@@ -128,4 +127,3 @@ class GUI(object):
     
 token = "089c874aefeb3e6a4d655c73819949be"
 gui = GUI(token)
-# gui.toggl.useShortcut('toggl')
