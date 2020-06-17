@@ -114,10 +114,18 @@ class GUI(object):
         # user_entry.focus()
 
         #Define keyboard shortcuts while in window
+        self.root.bind("<FocusIn>", self.onFocusIn)
+        self.root.bind("<FocusOut>", self.onFocusOut)
         self.root.bind("<Escape>", self.exit)
         self.root.bind('<Return>',self.run_shortcut)
         self.root.mainloop()
     
+    def onFocusIn(event): 
+        pass
+
+    def onFocusOut(event):
+        pass
+
     def exit(self, event):
         self.root.destroy()
         # self.root.iconify()
