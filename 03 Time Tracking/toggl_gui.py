@@ -79,7 +79,7 @@ class GUI(object):
     def __init__(self,token):
         self.toggl = Toggl(token)
         self.directory = getcwd()
-        self.icon = self.directory+'\\toggl-32.png'
+        self.icon = self.directory+'\\toggl-512.png'
         self.build_gui()
 
     def build_gui(self):
@@ -99,8 +99,8 @@ class GUI(object):
 
         self.entry_string = StringVar()
 
-        user_entry = ttk.Entry(mainframe,width=60, textvariable=self.entry_string, font='consolas')
-        user_entry.grid(column = 1, row=1, columnspan = 3)
+        self.user_entry = ttk.Entry(mainframe,width=60, textvariable=self.entry_string, font='consolas')
+        self.user_entry.grid(column = 1, row=1, columnspan = 3)
 
         refresh_button = ttk.Button(mainframe, text = u'\u27F3',command=self.refresh, width=10)
         refresh_button.grid(column=4,row=1, columnspan=2,sticky=E)
@@ -111,7 +111,8 @@ class GUI(object):
         # pad 5px in all directions
         for child in mainframe.winfo_children(): child.grid_configure(padx=2, pady=2)
 
-        # user_entry.focus()
+        # self.root.
+        self.user_entry.focus()
 
         #Define keyboard shortcuts while in window
         self.root.bind("<FocusIn>", self.onFocusIn)
@@ -120,11 +121,18 @@ class GUI(object):
         self.root.bind('<Return>',self.run_shortcut)
         self.root.mainloop()
     
-    def onFocusIn(event): 
+    def onFocusIn(self,event): 
+        # self.print2gui('Focus in\n')
+        self.user_entry.focus()
+        # self.root.focus_force()
         pass
+    
 
-    def onFocusOut(event):
+    def onFocusOut(self,event):
+        # self.print2gui('Focus Out\n')
+        # self.root.iconify()
         pass
+        
 
     def exit(self, event):
         self.root.destroy()
