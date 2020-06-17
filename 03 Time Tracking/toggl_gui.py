@@ -121,9 +121,11 @@ class GUI(object):
         response = self.toggl.useShortcut(self.entry_string.get())
         self.entry_string.set('')
         cmd_string = ' '*5+response['command']+' '*(5+(11-len(response['command']))) #it looks like a mess but i just want things to print pretty ok?
-        self.print2gui("\n------"+cmd_string+"------\n\t")
-        self.print2gui(response['desc']+'\n\t'+response['time']+"\n\n")
-        
+        self.print2gui("\n------"+cmd_string+"------\n\n\t")
+        self.print2gui(response['desc']+'\n\t'+response['time']+"\n")
+        if(response['command']=='stop_entry'):
+            self.print2gui('\tDuration:\t'+str(response['dur']))
+        self.print2gui('\n\n')
 
     
 token = "089c874aefeb3e6a4d655c73819949be"
