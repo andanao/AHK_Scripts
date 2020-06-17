@@ -33,7 +33,7 @@ class Toggl(togglpy):
 
     def useShortcut(self,input):
         answer = {}
-        answer['time'] = datetime.now().strftime("%H:%M")
+        
         try:
             name =  get_close_matches(input,self.shortcuts,n=1)[0]
         except:
@@ -43,7 +43,7 @@ class Toggl(togglpy):
                 
         else:
             entry = self.shortcuts[name]
-
+            answer['time'] = datetime.now().strftime("%H:%M")
             
             if entry['command'] == 'start_entry':
                 response = self.startTimeEntry(entry['desc'],entry['id'])
@@ -57,7 +57,8 @@ class Toggl(togglpy):
 
             elif entry['command'] == 'stop_entry':
                 response = self.stopRunningEntry()
-                answer['desc'] = 'jsut work pls'#response['data']['description']
+                answer['desc'] = response['data']['description']
+                answer['dur'] = response['data']['duration']
 
             answer['command'] = entry['command']
             # answer['desc'] = response['data']['description']
@@ -119,8 +120,8 @@ class GUI(object):
     def run_shortcut(self,event):
         response = self.toggl.useShortcut(self.entry_string.get())
         self.entry_string.set('')
-
-        self.print2gui("\n---\t"+response['command']+"\t---\n\t")
+        cmd_string = ' '*5+response['command']+' '*(5+(11-len(response['command']))) #it looks like a mess but i just want things to print pretty ok?
+        self.print2gui("\n------"+cmd_string+"------\n\t")
         self.print2gui(response['desc']+'\n\t'+response['time']+"\n\n")
         
 
