@@ -247,7 +247,7 @@ class Hotkeys:
             listener.join()
     
 token = "089c874aefeb3e6a4d655c73819949be"
-# gui = GUI(token)
-hotkeys = Hotkeys(token)
+gui = GUI(token)
+# hotkeys = Hotkeys(token)
 # hotkeys.key = tokenA
-hotkeys.start_listener()
+# hotkeys.start_listener()
