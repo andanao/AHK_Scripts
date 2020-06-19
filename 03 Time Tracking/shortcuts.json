@@ -9,9 +9,14 @@
         "desc" : "The Bilingual Mind",
         "command":"start_entry"
     },
-    "structure": {
-        "id" : "161043718",
-        "desc" : "The Structure of Scientific Revolutions",
+    "drive": {
+        "id" : "161539135",
+        "desc" : "Driving",
+        "command":"start_entry"
+    },
+    "commute": {
+        "id" : "161539178",
+        "desc" : "Commuting to work",
         "command":"start_entry"
     },
     "admin": {
