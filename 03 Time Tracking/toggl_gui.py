@@ -172,17 +172,20 @@ class GUI:
 class Hotkeys:
     # Create a mapping of keys to function (use frozenset as sets/lists are not hashable - so they can't be used as keys)
     # Note the missing `()` after function_1 and function_2 as want to pass the function, not the return value of the function
-    
-    combination_to_function = {
-        frozenset([Key.shift, KeyCode(vk=65)]): function_1,  # shift + a
-        frozenset([Key.shift, KeyCode(vk=66)]): function_2,  # shift + b
-        frozenset([Key.alt_l, KeyCode(vk=71)]): function_3,  # left alt + g
-        frozenset([Key.alt_l, KeyCode(vk=67)]): function_3,  # left alt + c
-    }
+    def __init__(self,key):
+        # self.gui  =  object
+        # The currently pressed keys (initially empty)
+        self.pressed_vks = set()
+        self.token = ''
+        self.combination_to_function = {
+            frozenset([Key.shift, KeyCode(vk=65)]): self.function_1,  # shift + a
+            frozenset([Key.shift, KeyCode(vk=66)]): self.function_2,  # shift + b
+            frozenset([Key.alt_l, KeyCode(vk=71)]): self.function_3,  # left alt + g
+            frozenset([Key.alt_l, KeyCode(vk=67)]): self.start_gui,  # left alt + c
+            # frozenset([Key.alt_l, KeyCode(vk=67), KeyCode(vk=91)]): self.make_gui,  # WIN+ left alt + c
+        }
 
-
-    # The currently pressed keys (initially empty)
-    pressed_vks = set()
+        
 
     def function_1(self):
         """ One of your functions to be executed by a combination """
@@ -198,7 +201,18 @@ class Hotkeys:
         print('quitting')
         exit()
 
-
+    def start_gui(self):
+        # if self.gui.toggl:
+        if hasattr(self,'gui') :
+            print("opening gui")
+            self.gui.user_entry.focus()
+            pass
+            
+        else:
+            print('starting gui')
+            self.gui = GUI(self.token)
+            pass
+    
 
     def get_vk(self,key):
         """
@@ -216,7 +230,6 @@ class Hotkeys:
     def on_press(self,key):
         """ When a key is pressed """
         vk = self.get_vk(key)  # Get the key's vk
-        print(vk)
         self.pressed_vks.add(vk)  # Add it to the set of currently pressed keys
 
         for combination in self.combination_to_function:  # Loop through each combination
@@ -235,5 +248,6 @@ class Hotkeys:
     
 token = "089c874aefeb3e6a4d655c73819949be"
 # gui = GUI(token)
-hotkeys = Hotkeys()
+hotkeys = Hotkeys(token)
+# hotkeys.key = tokenA
 hotkeys.start_listener()
