@@ -22,6 +22,7 @@ combination_to_function = {
     frozenset([Key.shift, KeyCode(vk=65)]): function_1,  # shift + a
     frozenset([Key.shift, KeyCode(vk=66)]): function_2,  # shift + b
     frozenset([Key.alt_l, KeyCode(vk=71)]): function_3,  # left alt + g
+    frozenset([Key.alt_l, KeyCode(vk=67)]): function___3,  # left alt + c
 }
 
 
@@ -45,6 +46,7 @@ def is_combination_pressed(combination):
 def on_press(key):
     """ When a key is pressed """
     vk = get_vk(key)  # Get the key's vk
+    print(vk)
     pressed_vks.add(vk)  # Add it to the set of currently pressed keys
 
     for combination in combination_to_function:  # Loop through each combination
@@ -60,3 +62,5 @@ def on_release(key):
 
 with Listener(on_press=on_press, on_release=on_release) as listener:
     listener.join()
+
+print ('done with listener')

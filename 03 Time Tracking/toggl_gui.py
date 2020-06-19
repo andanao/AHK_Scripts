@@ -111,9 +111,6 @@ class GUI(object):
         # pad 5px in all directions
         for child in mainframe.winfo_children(): child.grid_configure(padx=2, pady=2)
 
-        # self.root.
-        self.user_entry.focus()
-
         #Define keyboard shortcuts while in window
         self.root.bind("<FocusIn>", self.onFocusIn)
         self.root.bind("<FocusOut>", self.onFocusOut)
@@ -135,8 +132,8 @@ class GUI(object):
         
 
     def exit(self, event):
-        self.root.destroy()
-        # self.root.iconify()
+        # self.root.destroy()
+        self.root.iconify()
         
     def refresh(self):
         self.print2gui('\n---\tRefreshing Shortcuts File\t---\n')
