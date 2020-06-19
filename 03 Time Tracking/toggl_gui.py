@@ -75,7 +75,7 @@ class Toggl(togglpy):
         return answer
 
 
-class GUI(object):
+class GUI:
     def __init__(self,token):
         self.toggl = Toggl(token)
         self.directory = getcwd()
