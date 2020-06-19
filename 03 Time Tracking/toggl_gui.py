@@ -169,7 +169,7 @@ class GUI:
             self.print2gui('\tDuration:\t'+str(timedelta(seconds=response['dur'])))
         self.print2gui('\n\n')
 
-class hotkeys:
+class Hotkeys:
     # Create a mapping of keys to function (use frozenset as sets/lists are not hashable - so they can't be used as keys)
     # Note the missing `()` after function_1 and function_2 as want to pass the function, not the return value of the function
     
@@ -234,4 +234,6 @@ class hotkeys:
             listener.join()
     
 token = "089c874aefeb3e6a4d655c73819949be"
-gui = GUI(token)
+# gui = GUI(token)
+hotkeys = Hotkeys()
+hotkeys.start_listener()
