@@ -19,6 +19,12 @@
         "desc" : "Commuting to work",
         "command":"start_entry"
     },
+    "chess": {
+        "id" : "161539123",
+        "desc" : "Chess AI",
+        "command":"start_entry"
+    },
+    
     "admin": {
         "id" : "161043709",
         "desc" : "Admin",
