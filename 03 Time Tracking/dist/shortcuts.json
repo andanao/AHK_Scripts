@@ -70,6 +70,11 @@
         "desc" : "Run",
         "command":"start_entry"
     },
+    "g bike": {
+        "id" : "161042542",
+        "desc" : "Bike",
+        "command":"start_entry"
+    },
     "hk": {
         "id" : "161043712",
         "desc" : "Housekeeping",
@@ -87,7 +92,7 @@
     },
     "meet": {
         "id" : "161043697",
-        "desc" : "Some work meeting of some sort",
+        "desc" : "Some work meeting",
         "command":"start_entry"
     },
     "theory": {
@@ -213,6 +218,11 @@
     "nap": {
         "id" : "161427785",
         "desc" : "Quick Nap <20m",
+        "command":"start_entry"
+    },
+    "boot up": {
+        "id" : "161427785",
+        "desc" : "Boot Up",
         "command":"start_entry"
     }
     
