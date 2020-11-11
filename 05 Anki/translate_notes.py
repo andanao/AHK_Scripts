@@ -6,7 +6,7 @@ class anki_tools:
     def __init__(self):
         self.trans = Translator()
         self.word_list = []
-        self.results = []
+        # self.results = []
 
     def set_word_list(self,in_list):
         if type(in_list) == str:
@@ -42,7 +42,8 @@ class anki_tools:
             self.set_word_list(word_list)
 
         out_list = []
-        translated = self.trans.translate(self.word_list,src = 'zh-cn')
+        translated = self.trans.translate(self.word_list,)
+        # translated = self.trans.translate(self.word_list,src = 'zh-cn')
 
         for item in translated:
             # hz = word_list[i]
@@ -53,14 +54,15 @@ class anki_tools:
         self.results = out_list
         return out_list
 
-    def save2csv(self,dir = 'default'):
+    def save_csv(self,dir = 'default'):
         if dir != 'default':
             print('not default dir')
         else:
-            dir = "C:\\Users\\Adrian\\Downloads\\"
-        df = pd.DataFrame(self)
+            dir = "C:\\Users\\Adrian\\Downloads\\Anki_translate_script.csv"
+        df = pd.DataFrame(self.results)
 
-        df.to_csv(dir)
+        df.to_csv(dir,index=False,header=False)
+        print("\n\nsaved to Downloads!\n\n")
 
 worklist = [
     '白宫',
@@ -92,5 +94,8 @@ worklist = [
 
 tools = anki_tools()
 tools.set_word_list(worklist)
-out = tools.hanzi2anki()
+
+
+tools.hanzi2anki()
+tools.save_csv()
 # out = tools.hanzi2pinyin()
