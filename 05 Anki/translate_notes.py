@@ -18,7 +18,7 @@ class anki_tools:
         '''
         Word list must be list of 汉字
         Using google translate
-        
+       [['汉字', 'Hànzì', 'Chinese character']]
         '''
         if word_list:
             self.set_word_list(word_list)
@@ -29,6 +29,23 @@ class anki_tools:
         for item in translated:
             # hz = word_list[i]
             test_list = [item.origin, item.extra_data['translation'][1][3],item.text]
+            # print(test_list)
+            out_list.append(test_list)
+        return out_list
+    
+    def hanzi2pinyin(self,word_list = False):
+        '''
+        Using google translate to get pinyin
+        '''
+        if word_list:
+            self.set_word_list(word_list)
+
+        out_list = []
+        translated = self.trans.translate(self.word_list,src = 'zh-cn')
+
+        for item in translated:
+            # hz = word_list[i]
+            test_list = [item.origin, item.extra_data['translation'][1][3]]
             # print(test_list)
             out_list.append(test_list)
         return out_list
@@ -65,4 +82,5 @@ worklist = [
 
 tools = anki_tools()
 tools.set_word_list(worklist)
-out = tools.hanzi2anki()
+# out = tools.hanzi2anki()
+out = tools.hanzi2pinyin()
