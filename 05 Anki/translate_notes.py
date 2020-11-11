@@ -2,7 +2,6 @@ import pandas as pd
 from googletrans import Translator
 
 class anki_tools:
-    
 
     def __init__(self):
         self.trans = Translator()
