@@ -6,16 +6,33 @@ class anki_tools:
 
     def __init__(self):
         self.trans = Translator()
+        self.word_list = []
 
 
     def set_word_list(self,in_list):
+        if type(in_list) == str:
+            in_list = [in_list]
         self.word_list = in_list
     
-    def hanzi2anki(self,word_list = self.word_list):
+    def hanzi2anki(self,word_list = False):
         '''
         Word list must be list of 汉字
+        Using google translate
+        
         '''
+        if word_list:
+            self.set_word_list(word_list)
+
         out_list = []
+        translated = self.trans.translate(self.word_list,src = 'zh-cn')
+
+        for item in translated:
+            # hz = word_list[i]
+            test_list = [item.origin, item.extra_data['translation'][1][3],item.text]
+            # print(test_list)
+            out_list.append(test_list)
+        return out_list
+
         
 
 worklist = [
@@ -47,4 +64,5 @@ worklist = [
     ]
 
 tools = anki_tools()
-out = translator.translate(worklist)
+tools.set_word_list(worklist)
+out = tools.hanzi2anki()
