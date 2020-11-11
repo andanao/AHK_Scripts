@@ -1,8 +1,22 @@
 import pandas as pd
 from googletrans import Translator
 
+class anki_tools:
+    
 
-translator = Translator()
+    def __init__(self):
+        self.trans = Translator()
+
+
+    def set_word_list(self,in_list):
+        self.word_list = in_list
+    
+    def hanzi2anki(self,word_list = self.word_list):
+        '''
+        Word list must be list of 汉字
+        '''
+        out_list = []
+        
 
 worklist = [
     '白宫',
@@ -32,5 +46,5 @@ worklist = [
     '悲伤',
     ]
 
-
+tools = anki_tools()
 out = translator.translate(worklist)
