@@ -12,6 +12,7 @@ class anki_tools:
         if type(in_list) == str:
             in_list = [in_list]
         self.word_list = in_list
+        print("Word list set")
     
     def hanzi2anki(self,word_list = False):
         '''
@@ -42,7 +43,7 @@ class anki_tools:
             self.set_word_list(word_list)
 
         out_list = []
-        translated = self.trans.translate(self.word_list,)
+        translated = self.trans.translate(self.word_list)
         # translated = self.trans.translate(self.word_list,src = 'zh-cn')
 
         for item in translated:

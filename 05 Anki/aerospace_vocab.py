@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
-import anki_tools
+from anki_tools import anki_tools
 import re
 import pyperclip
 
@@ -30,10 +30,13 @@ hanzi = re.findall(r'[\u4e00-\u9fff]+(?=,)',cleaned_text)
 words = re.findall(r'(?<=,)[a-zA-Z]+',cleaned_text)
 
  
-print(len(hanzi))
-print(len(words))
+# print(len(hanzi))
+# print(len(words))
 
-for i in range(len(hanzi)):
+# for i in range(len(hanzi)):
+#     print(hanzi[i]+'\t'+words[i])
     
-    print(hanzi[i]+'\t'+words[i])
-    
+tools = anki_tools()
+tools.set_word_list(hanzi)
+test = tools.hanzi2pinyin()
+print(test)
