@@ -48,6 +48,7 @@ class anki_tools:
 
         for item in translated:
             # hz = word_list[i]
+            print(item)
             test_list = [item.origin, item.extra_data['translation'][1][3]]
             # print(test_list)
             out_list.append(test_list)
