@@ -19,11 +19,12 @@ def clean_notes():
     f.close()
 
 def make_anki():
+    f = open("cleaned.txt", "r",encoding='utf-8').read()
     print('not_done')
 
 
 if __name__ == "__main__":
-    clean_notes()
+    # clean_notes()
 
     # if click.confirm('Check cleaned.txt for logic',default=True):
-        make_anki()
+    make_anki()
