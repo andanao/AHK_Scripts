@@ -97,9 +97,9 @@ if __name__ == "__main__":
         ]
 
     tools = anki_tools()
-    tools.set_word_list(worklist)
+    # tools.set_word_list(worklist)
 
 
-    tools.hanzi2anki()
-    tools.save_csv()
-    out = tools.hanzi2pinyin()
+    # tools.hanzi2anki()
+    # tools.save_csv()
+    # out = tools.hanzi2pinyin()
