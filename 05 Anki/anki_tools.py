@@ -66,40 +66,40 @@ class anki_tools:
         df.to_csv(directory,index=False,header=False)
         print("\n\nsaved\n\n")
 
-if __name__ == "__main__":
-    print('running main')
-    worklist = [
-        '白宫',
-        '国会',
-        '政策',
-        '众议院',
-        '参议院',
-        '停运',
-        '跌宕起伏',
-        '人生中的跌宕起伏',
-        '阳性',
-        '阴性',
-        '假期',
-        '一战',
-        '清单',
-        '医疗保险',
-        '预测',
-        '理工男',
-        '情商',
-        '智商',
-        '全面发展',
-        '社交能力',
-        '专业术语',
-        '方差',
-        '电影院',
-        '歌曲',
-        '悲伤',
-        ]
+# if __name__ == "__main__":
+#     print('running main')
+#     worklist = [
+#         '白宫',
+#         '国会',
+#         '政策',
+#         '众议院',
+#         '参议院',
+#         '停运',
+#         '跌宕起伏',
+#         '人生中的跌宕起伏',
+#         '阳性',
+#         '阴性',
+#         '假期',
+#         '一战',
+#         '清单',
+#         '医疗保险',
+#         '预测',
+#         '理工男',
+#         '情商',
+#         '智商',
+#         '全面发展',
+#         '社交能力',
+#         '专业术语',
+#         '方差',
+#         '电影院',
+#         '歌曲',
+#         '悲伤',
+#         ]
 
-    tools = anki_tools()
-    # tools.set_word_list(worklist)
+#     tools = anki_tools()
+#     # tools.set_word_list(worklist)
 
 
-    # tools.hanzi2anki()
-    # tools.save_csv()
-    # out = tools.hanzi2pinyin()
+#     # tools.hanzi2anki()
+#     # tools.save_csv()
+#     # out = tools.hanzi2pinyin()

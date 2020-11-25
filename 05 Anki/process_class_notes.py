@@ -20,6 +20,9 @@ def clean_notes():
 
 def make_anki():
     f = open("cleaned.txt", "r",encoding='utf-8').read()
+    word_list = f.split('\n')
+    tools = anki_tools
+    tools.set_word_list(word_list)
     print('not_done')
 
 
