@@ -1,10 +1,11 @@
 import re
 from urllib.request import urlopen
-
 from bs4 import BeautifulSoup
 from googletrans import Translator
-
+import pinyin
 from anki_tools import anki_tools
+import pandas as pd
+
 
 full_dir = r'C:\Users\Adrian\Dropbox\中文\航空航天专业翻译必备词汇 - 百度文库.html'
 
@@ -31,23 +32,15 @@ cleaned_text = re.sub(r'([\u4e00-\u9fff]{1})(?=[a-zA-Z]{1})','\\1,',cleaned_text
 hanzi = re.findall(r'[\u4e00-\u9fff]+(?=,)',cleaned_text)
 words = re.findall(r'(?<=,)[a-zA-Z]+',cleaned_text)
 
-trans = Translator()
-translated = trans.translate(hanzi,src = 'zh-cn')
-pinyin = []
-for item in translated:
-    pinyin = item.extra_data['translation'][1][3]
-    print(pinyin)
-
-
-
-
 # print(len(hanzi))
 # print(len(words))
 
-# for i in range(len(hanzi)):
-#     print(hanzi[i]+'\t'+words[i])
-    
-# tools = anki_tools()
-# tools.set_word_list(hanzi)
-# test = tools.hanzi2pinyin()
-# print(test)
+out_list = []
+if len(hanzi) == len(words):
+    for i in range(len(hanzi)):
+        pyn = pinyin.get(hanzi[i])
+        # print(hanzi[i]+'\t'+pyn+'\t'+words[i])
+        out_list.append([hanzi[i], pyn, words[i]])
+
+out_df= pd.DataFrame(out_list)
+out_df.to_csv('aero_vocab.csv',index=False,header=False)

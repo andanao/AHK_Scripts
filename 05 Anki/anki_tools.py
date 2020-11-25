@@ -56,48 +56,50 @@ class anki_tools:
         self.results = out_list
         return out_list
 
-    def save_csv(self,dir = 'default'):
-        if dir != 'default':
+    def save_csv(self,directory = 'default'):
+        if directory != 'default':
             print('not default dir')
         else:
-            dir = "C:\\Users\\Adrian\\Downloads\\Anki_translate_script.csv"
+            directory = r"anki_translated_script.csv"
         df = pd.DataFrame(self.results)
 
-        df.to_csv(dir,index=False,header=False)
-        print("\n\nsaved to Downloads!\n\n")
+        df.to_csv(directory,index=False,header=False)
+        print("\n\nsaved\n\n")
 
-# worklist = [
-#     '白宫',
-#     '国会',
-#     '政策',
-#     '众议院',
-#     '参议院',
-#     '停运',
-#     '跌宕起伏',
-#     '人生中的跌宕起伏',
-#     '阳性',
-#     '阴性',
-#     '假期',
-#     '一战',
-#     '清单',
-#     '医疗保险',
-#     '预测',
-#     '理工男',
-#     '情商',
-#     '智商',
-#     '全面发展',
-#     '社交能力',
-#     '专业术语',
-#     '方差',
-#     '电影院',
-#     '歌曲',
-#     '悲伤',
-#     ]
+if __name__ == "__main__":
+    print('running main')
+    worklist = [
+        '白宫',
+        '国会',
+        '政策',
+        '众议院',
+        '参议院',
+        '停运',
+        '跌宕起伏',
+        '人生中的跌宕起伏',
+        '阳性',
+        '阴性',
+        '假期',
+        '一战',
+        '清单',
+        '医疗保险',
+        '预测',
+        '理工男',
+        '情商',
+        '智商',
+        '全面发展',
+        '社交能力',
+        '专业术语',
+        '方差',
+        '电影院',
+        '歌曲',
+        '悲伤',
+        ]
 
-# tools = anki_tools()
-# tools.set_word_list(worklist)
+    tools = anki_tools()
+    tools.set_word_list(worklist)
 
 
-# tools.hanzi2anki()
-# tools.save_csv()
-# out = tools.hanzi2pinyin()
+    tools.hanzi2anki()
+    tools.save_csv()
+    out = tools.hanzi2pinyin()
