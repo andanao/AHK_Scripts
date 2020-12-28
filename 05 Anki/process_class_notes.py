@@ -25,7 +25,7 @@ def make_anki():
 
 
 if __name__ == "__main__":
-    # clean_notes()
+    clean_notes()
 
     # if click.confirm('Check cleaned.txt for logic',default=True):
-    make_anki()
+    # make_anki()
