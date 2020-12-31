@@ -29,7 +29,12 @@ def note_paper(name):
 
 
 def pg_outline(drawing, pg_corners):
-    olines = dwg.add(dwg.g(id='olines',stroke='black'))
+    olines = dwg.add(dwg.g(id='olines',
+        stroke='black',
+        stroke_width = '1',
+        stroke_dasharray='2 5',
+        stroke_linejoin="round"
+    ))
     olines.add(dwg.line(
         start=(pg_corners[0]*inch, pg_corners[0]*inch), 
         end=(pg_corners[2]*inch, pg_corners[0]*inch)
