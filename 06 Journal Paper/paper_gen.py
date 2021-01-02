@@ -50,7 +50,7 @@ class paper_maker:
             ]
 
         
-        self.pg_outline(pg_corners,True)
+        # self.pg_outline(pg_corners,True)
         self.h_lines(corners_1,35)
         self.h_lines(corners_2,35)
         
@@ -144,6 +144,7 @@ class paper_maker:
 
 if __name__ == '__main__':
     name = 'note_paper_01_front'
+    # name = 'note_paper_01_back'
     namesvg = name+'.svg'
     namepdf = name+'.pdf'
     maker = paper_maker(namesvg)

@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="8.5in" version="1.1" width="11in">
   <defs/>
-  <g id="olines" stroke="black" stroke-dasharray="2 5" stroke-linejoin="round" stroke-width="1">
-    <line x1="0in" x2="11in" y1="0in" y2="0in"/>
-    <line x1="11in" x2="11in" y1="0in" y2="8.5in"/>
-    <line x1="11in" x2="0in" y1="8.5in" y2="8.5in"/>
-    <line x1="0in" x2="0in" y1="8.5in" y2="0in"/>
-    <line x1="5.5in" x2="5.5in" y1="8.5in" y2="0in"/>
-  </g>
   <g id="hlines" stroke="#000000" stroke-dasharray=".5 2.75" stroke-linecap="round" stroke-opacity=".5" stroke-width=".5">
     <line x1="0.5905511811023622in" x2="5.106299212598425in" y1="0.5905511811023622in" y2="0.5905511811023622in"/>
     <line x1="0.5905511811023622in" x2="5.106299212598425in" y1="0.8052868391451069in" y2="0.8052868391451069in"/>
