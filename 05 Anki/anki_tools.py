@@ -1,5 +1,6 @@
+# %%
 import pandas as pd
-from googletrans import Translator
+from microsoft_translator import Translator
 
 class anki_tools:
     def __init__(self):

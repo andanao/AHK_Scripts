@@ -10,7 +10,9 @@ class Translator():
     '''
     def __init__(self,key='',src='zh-Hans',dest='en'):
         if key =='':
-            print('no key defined!')
+            key = '25b27cf625b14347a856c4c75cf34697'
+            # probably not the best habit to do
+            # I'll fix/change it if I need to I know where it is
         
         self.subscription_key = key
         endpoint = "https://api.cognitive.microsofttranslator.com"
