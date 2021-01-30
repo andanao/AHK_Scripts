@@ -9,4 +9,4 @@ col.notes.add_note('HSK',['test_python','test_python','','','','','',],ntags=['D
 col.summarize_changes()
 
 # Below should write changes to Anki but its not working ¯\_(ツ)_/¯ 
-# col.write(modify=True,add=True)
+# col.write(modify=True,add=True)pip 
