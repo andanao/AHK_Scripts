@@ -18,7 +18,7 @@ def clean_notes():
     f.write(cleaned_text)
     f.close()
 
-def make_anki():
+def make_anki(out_f = "cleaned.txt"):
     f = open("cleaned.txt", "r",encoding='utf-8').read()
     word_list = f.split('\n')
     print('not_done')

@@ -27,7 +27,7 @@ class Translator():
         }
         
         self.headers = {
-            'Ocp-Apim-Subscription-Key': subscription_key,
+            'Ocp-Apim-Subscription-Key': self.subscription_key,
             'Ocp-Apim-Subscription-Region': location,
             'Content-type': 'application/json',
             'X-ClientTraceId': str(uuid.uuid4())
