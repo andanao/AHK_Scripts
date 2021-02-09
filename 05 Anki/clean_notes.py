@@ -1,6 +1,5 @@
 # %%
 import pinyin
-import pandas as pd
 import re
 
 
