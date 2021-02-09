@@ -1,2 +1,9 @@
 from .microsoft_translator import Translator
-from.cleand_to_csv import   
+
+
+def process_notes(notes_raw,notes_out):
+    print('testing')
+
+
+if __name__ == "__main__":
+    notes_raw = 'notes_raw.txt'

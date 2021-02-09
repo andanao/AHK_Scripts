@@ -9,6 +9,11 @@ class Translator():
     dest - destination language (default en)
     '''
     def __init__(self,key='',src='zh-Hans',dest='en'):
+        '''
+        Key - API Key
+        src - Source language (default zh-Hans)
+        dest - destination language (default en)
+        '''
         if key =='':
             key = '25b27cf625b14347a856c4c75cf34697'
             # probably not the best habit to do
@@ -49,7 +54,7 @@ class Translator():
 
     def translate(self, word):
         '''
-        pass word as string or as list
+        word - string/list to be translated
         '''
         body = []
         if isinstance(word,str):
