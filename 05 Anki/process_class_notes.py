@@ -1,5 +1,4 @@
 import pinyin
-from anki_tools import anki_tools
 import pandas as pd
 import re
 import click
