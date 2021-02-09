@@ -6,3 +6,6 @@ def make_anki(input_f = "notes_cleaned.txt"):
 
     print(word_list)
     print('\n\nINCOMPLETE FN')
+
+if __name__ == "__main__":
+    clean_notes(to_file=True)
