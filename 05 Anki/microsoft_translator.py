@@ -62,12 +62,17 @@ class Translator():
         if isinstance(word,list):
             for i in word:
                 body.append({'text':i})
-
-        response =  self._make_request(body)
         out = []
-        for i in response:
-            print(i)
-            try:
+
+        # for some reason the API won't take requests longer than 100 chars
+        # so strings must split up¯\_(ツ)_/¯
+        chunks = [body[x:x+100] for x in range(0, len(body), 100)]
+
+        for block in chunks:
+            
+            response =  self._make_request(block)
+            for i in response:
+                # print(i)
                 out.append(i['translations'][0]['text'])
 
         return out
@@ -92,3 +97,4 @@ if __name__ == "__main__":
 
 
 # %%
+from math import floor
