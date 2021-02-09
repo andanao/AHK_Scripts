@@ -29,7 +29,6 @@ def make_anki(input_f = "notes_cleaned.txt",out_f = 'notes_import.csv'):
         writer.writerows(full_list)
     return full_list
 
-# %%
 if __name__ == "__main__":
     notes_raw = 'notes_raw.txt'
     clean_notes(to_file=True)
