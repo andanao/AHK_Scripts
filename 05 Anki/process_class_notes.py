@@ -7,6 +7,7 @@ def clean_notes(input_f = "notes_raw.txt",to_file= False, out_f='notes_cleaned.t
     file = open(input_f, "r",encoding='utf-8').read()
 
     cleaned_text = re.sub(r'(?<=[\u4e00-\u9fff])\d','',file)
+    cleaned_text = re.sub(r'[【\[].*[】\]]')
     cleaned_text = re.sub(r'.*\:.*','',cleaned_text)
     cleaned_text = re.sub(r'.*\ds.*','',cleaned_text)
     cleaned_text = re.sub(r'\/','\n',cleaned_text)
@@ -24,7 +25,7 @@ def clean_notes(input_f = "notes_raw.txt",to_file= False, out_f='notes_cleaned.t
 def make_anki(input_f = "notes_cleaned.txt"):
     f = open(input_f, "r",encoding='utf-8').read()
     word_list = f.split('\n')
-    
+
     print(word_list)
     print('\n\nINCOMPLETE FN')
 
