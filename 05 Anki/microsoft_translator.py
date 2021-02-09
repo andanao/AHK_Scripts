@@ -64,7 +64,7 @@ class Translator():
                 body.append({'text':i})
         out = []
 
-        # for some reason the API won't take requests longer than 100 chars
+        # for some reason the API won't take requests longer than 100 lines
         # so strings must split up¯\_(ツ)_/¯
         chunks = [body[x:x+100] for x in range(0, len(body), 100)]
 
