@@ -3,6 +3,9 @@ import pinyin
 import csv
 from microsoft_translator import Translator
 from clean_notes import clean_notes
+'''
+All you should have to do with this whole thing is just run it and it will do all the work for you
+'''
 
 
 def process_notes(notes_raw,notes_out):
