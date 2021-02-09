@@ -2,7 +2,7 @@
 import pinyin
 import pandas as pd
 import re
-import click
+
 
 def clean_notes(input_f = "notes_raw.txt",to_file= False, out_f='notes_cleaned.txt'):
     file = open(input_f, "r",encoding='utf-8').read()

@@ -1,6 +1,6 @@
 # %%
 from microsoft_translator import Translator
-from process_class_notes import clean_notes
+from clean_notes import clean_notes
 
 def process_notes(notes_raw,notes_out):
     print('testing')
