@@ -24,13 +24,6 @@ def clean_notes(input_f = "notes_raw.txt",to_file= False, out_f='notes_cleaned.t
         print("\n\t{} cleaned input file, output to file supressed".format(input_f))
     return cleaned_text
 
-def make_anki(input_f = "notes_cleaned.txt"):
-    f = open(input_f, "r",encoding='utf-8').read()
-    word_list = f.split('\n')
-
-    print(word_list)
-    print('\n\nINCOMPLETE FN')
-
 
 if __name__ == "__main__":
     clean_notes(to_file=True)
