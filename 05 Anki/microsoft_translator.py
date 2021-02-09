@@ -66,6 +66,7 @@ class Translator():
         response =  self._make_request(body)
         out = []
         for i in response:
+
             out.append(i['translations'][0]['text'])
         return out
 
@@ -81,6 +82,10 @@ if __name__ == "__main__":
 
     print(trans.translate(tw))
     print(trans.translate(tl))
+    f = open('notes_cleaned.txt', "r",encoding='utf-8').read()
+    word_list = f.split('\n')
 
     
 
+
+# %%
