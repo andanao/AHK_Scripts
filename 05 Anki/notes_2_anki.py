@@ -9,4 +9,7 @@ def process_notes(notes_raw,notes_out):
 if __name__ == "__main__":
     notes_raw = 'notes_raw.txt'
     clean_notes(to_file=True)
+
+
+
 # %%
