@@ -3,7 +3,7 @@ import pandas as pd
 import re
 import click
 
-def clean_notes(input_f = "notes_raw.txt",out_f=''):
+def clean_notes(input_f = "notes_raw.txt",to_file= False, out_f='notes_cleaned.txt'):
     file = open("class_notes.txt", "r",encoding='utf-8').read()
 
     cleaned_text = re.sub(r'(?<=[\u4e00-\u9fff])\d','',file)
@@ -13,12 +13,12 @@ def clean_notes(input_f = "notes_raw.txt",out_f=''):
     cleaned_text = re.sub(r'(早上好|你好)','',cleaned_text)
     cleaned_text = re.sub(r'[^\u4e00-\u9fff]+','\n',cleaned_text)
 
-    if out_f=='':
+    if to_file:
         f = open(out_f, "w+",encoding='utf-8')
         f.write(cleaned_text)
         f.close()
     else:
-        print("{} cleaned ")
+        print("\n\t{} cleaned".format(input_f))
         return cleaned_text
 
 def make_anki(input_f = "notes_cleaned.txt"):
