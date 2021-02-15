@@ -4,6 +4,11 @@ import csv
 from microsoft_translator import Translator
 from clean_notes import clean_notes
 '''
+To process your class notes:
+1. Copy raw class text into notes_raw.txt
+2. Run this file
+3. Review notes_import.csv for a sanity check
+4. Import into Anki
 All you should have to do with this whole thing is just run it and it will do all the work for you
 '''
 
@@ -39,3 +44,5 @@ if __name__ == "__main__":
 
 
 
+
+# %%
