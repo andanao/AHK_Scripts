@@ -8,11 +8,6 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 
 CapsLock::Ctrl
 
-::;;e::adrian.danao.schroeder@ses.com
-::;;n::Adrian Danao-Schroeder
-::;;u::adanaos
-::;;p::202-924-7073
-
 
 ::;;d::
 	FormatTime, CurrentDateTime,, yyyy-MM-dd
